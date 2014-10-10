@@ -8,6 +8,9 @@ ini_set('error_reporting', E_ALL);
 require 'Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 
+// Including helper files
+require 'helpers/helpers.php';
+
 global $app;
 $app = new \Slim\Slim(array(
 	'debug' => true,
