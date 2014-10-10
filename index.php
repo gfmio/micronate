@@ -17,6 +17,11 @@ $app = new \Slim\Slim(array(
 	'templates.path' => './views'
 ));
 
+// GET / : Homepage
+$app->get('/',function() use($app){
+	echo "This is home.";
+});
+
 // Example GET request to a normal page
 $app->get('/home',function() use($app){
 	//regular html response
@@ -34,11 +39,13 @@ $app->get('/api','APIrequest',function() use($app){
 
 // Error 500 handler
 $app->error(function (\Exception $e) use ($app) {
+    echo "Error 500";
     // $app->render();
 });
 
 // Error 404 Handler
 $app->notFound(function () use ($app) {
+    echo "Error 404";
     // $app->render();
 });
 
