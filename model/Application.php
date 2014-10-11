@@ -6,13 +6,45 @@ class Application {
   private $name;
   private $secret_key;
   private $publishable_key;
+  private $developer_id;
 
   public static function createNew($developer, $appname) {
-    // create a new entry in db and retrieve id
-    //return $newId;
+    // create a new entry in db and retrieve its id
+
+    DB::init();
+
+    $q = DB::$pdo->prepare("INSERT INTO application (name, developer_id, secret_key, publishable_key)
+                       VALUES (:name, :developer_id, :secret_key, :publishable_key)");
+
+    $rowsAffected = $q->execute(array(
+            ':name' => $name,
+            ':developer_id' => $developer->getId(),
+            ':secret_key' => sha1("asddf"),
+            ':publishable_key' => sha1("asdrf"),
+    ));
+
+    if ($rowsAffected == 0) {
+      return 0;
+    }
+
+    return DB::$pdo->lastInsertId();
   }
 
   public function __construct($id) {
+
+    DB::init();
+    $q = DB::$pdo->prepare("SELECT * FROM application WHERE id = :id LIMIT 1");
+    $q->execute(array(
+        ':id' => $id,
+    ));
+
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+
+    $this->id = $res['id'];
+    $this->name = $res['name'];
+    $this->secret_key = $res['secret_key'];
+    $this->publishable_key = $res['publishable_key'];
+    $this->developer_id = $res['developer_id'];
 
   }
 
@@ -26,6 +58,10 @@ class Application {
 
   public function getPublishableKey() {
     return $this->publishable_key;
+  }
+
+  public function getDeveloper() {
+    return new User($this->developer_id);
   }
 
   public function getAppUsers() {

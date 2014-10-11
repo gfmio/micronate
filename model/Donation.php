@@ -16,6 +16,7 @@ class Donation {
   }
 
   public function __construct($id) {
+    
     DB::init();
     $q = DB::$pdo->prepare("SELECT * FROM donation WHERE id = :id LIMIT 1");
     $q->execute(array(
