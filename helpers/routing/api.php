@@ -1,11 +1,9 @@
 <?php
 
-
 $app->group('/api', 'APIrequest', function () use ($app) {
 	// User
 
 	$app->get('/user',function() use ($app) {
-		
 		$app->render(200,array(
 			'msg' => 'welcome to my API!',
 		));
