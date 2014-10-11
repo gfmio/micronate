@@ -148,6 +148,10 @@ class User {
     // update db
   }
 
+  public function initiateMicro($application, $amount) {
+    return MicroTransaction::create($application, $this, $amount);
+  }
+
   public function donate($amount, $campaign) {
     // create and submit a donation
     Donation::process($this, $campaign, $amount);
@@ -161,6 +165,23 @@ class User {
     // retrieve apps that the user is developer of
   }
 
+  public static function getUserId($user_token, $application_id) {
+    // return ID if found, otherwise 0
+    DB::init();
+    $q = DB::$pdo->prepare('SELECT * FROM user_app_link WHERE user_token = :token AND application_id = :app_id LIMIT 1');
+
+    $q->execute(array(
+      ':token' => $user_token,
+      ':app_id' => $application_id,
+    ));
+
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+
+    if (empty($res))
+      return 0;
+
+    return $res['user_id'];
+  }
 }
 
 ?>
