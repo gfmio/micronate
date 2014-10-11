@@ -11,6 +11,9 @@ require_once 'views/profileview.php';
 require_once 'views/editprofileview.php';
 require_once 'views/usertransactionview.php';
 
+require_once 'views/headerview.php';
+require_once 'views/error404view.php';
+require_once 'views/error500view.php';
 
 $app->get('/',function() use($app) {
     $app->render("LandingView", array(

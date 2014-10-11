@@ -1,3 +1,8 @@
+<?php
+
+class Error500View extends SimpleView {
+	function _render() {
+		?>
 <div class="frame full-width full-height bg-red text-white">
 	<div class="vcenter">
 		<div class="center">
@@ -13,3 +18,6 @@
 		</div>
 	</div>
 </div>
+		<?php
+	}
+}

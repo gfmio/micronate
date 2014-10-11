@@ -1,3 +1,8 @@
+<?php
+
+class HeaderView extends SimpleView {
+	function _render() {
+		?>
 <nav id="header" class="clear" style="vertical-align: middle; position: absolute; width: 100%; top: 0;">
 	<div class="left">
 		<h1 style="margin: 0; vertical-align: middle;" class="left text-huge hpadding-small">
@@ -23,3 +28,6 @@
 		</ul>
 	</div>
 </nav>
+		<?php
+	}
+}

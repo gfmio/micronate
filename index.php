@@ -28,7 +28,7 @@ $app->get('/sentEmails', function() use($app){
 
 $app->error(function (\Exception $e) use ($app) {
 	if (strpos($_SERVER['REQUEST_URI'],'/api') === false) {
-        $app->render("error500.html", array(
+        $app->render("Error500View", array(
             "title" => "Micronate - Error 500"
         ), 500);
     } else {
@@ -42,7 +42,7 @@ $app->error(function (\Exception $e) use ($app) {
 
 $app->notFound(function () use ($app) {
     if (strpos($_SERVER['REQUEST_URI'],'/api') === false) {
-        $app->render("error404.html", array(
+        $app->render("Error404View", array(
             "title" => "Micronate - Error 404"
         ), 404);
     } else {

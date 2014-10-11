@@ -3,7 +3,7 @@
 class HomeView extends SimpleView {
 	function _render() {
 		?>
-{view:header:{}}
+		<?php $headerView = new HeaderView(); echo $headerView->render(); ?>
 		<div class="frame full-width full-height bg-darker-grey landing parallax hpadding-small">
 			<div class="vcenter">
 				<div class="center text-white" id="title-content">
