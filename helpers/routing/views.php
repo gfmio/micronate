@@ -50,7 +50,7 @@ $app->get('/discover', function() use ($app) {
 	$campaigns[0]->endDateTime->setDate(2014, 12, 1);
 	$campaigns[0]->endDateTime->setTime(12, 0, 0);
 	$campaigns[0]->creator_id = 3;
-	
+
 	$campaigns[] = new StdClass();
 	$campaigns[1]->id = 2;
 	$campaigns[1]->title = "Example Title 2";
@@ -66,7 +66,7 @@ $app->get('/discover', function() use ($app) {
 	$campaigns[1]->endDateTime->setDate(2014, 11, 1);
 	$campaigns[1]->endDateTime->setTime(18, 0, 0);
 	$campaigns[1]->creator_id = 4;
-	
+
 	$app->render("DiscoverView", array(
 		"title" => "Micronate - Discover",
 		"campaigns" => $campaigns
@@ -99,7 +99,7 @@ $app->get('/campagins/:id', function($id) use ($app) {
 		$app->render("Error404View", array(
             "title" => "Micronate - Error 404"
         ), 404);
-	}	
+	}
 });
 
 // Editing a campaign
@@ -144,3 +144,23 @@ $app->get('/profile/transactions', function($id) use ($app) {
 		"title" => "Micronate - User transactions"
 	));
 });
+
+// $app->get('/register', function() use($app){
+// 	$app->render("register.html");
+// });
+
+// $app->post('/signup', function() use($app){
+// 	$params = $app->request->post();
+
+// 	$newUID = User::createNew($params['email'], $params['username'],
+// 												    $params['pwd'], $params['firstname'],
+// 												    $params['lastname'], $params['location']);
+
+// 	echo $newUID;
+// });
+
+// $app->post('/login', function() use($app){
+// 	$params = $app->request->post();
+// 	echo User::verifyCredentials($params['email'], $params['password']);
+// 	// create a User obj and keep it
+// });
