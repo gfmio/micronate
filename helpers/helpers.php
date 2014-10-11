@@ -12,5 +12,5 @@ function APIrequest(){
 
 // require_once 'model/User.php';
 
-// require_once 'routing/views.php';
-// require_once 'routing/api.php';
+require_once 'routing/views.php';
+require_once 'routing/api.php';

@@ -5,18 +5,21 @@ error_reporting(-1);
 ini_set('display_errors', '1');
 ini_set('error_reporting', E_ALL);
 
-require 'Slim/Slim.php';
-
+require_once 'Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
+
+require_once 'helpers/mainview.php';
 
 global $app;
 $app = new \Slim\Slim(array(
 	'debug' => true,
-	'templates.path' => './views'
+	'templates.path' => './views',
+    'view' => new MainView()
 ));
 
 // Including helper files (Everything is loaded from here)
 // Routing is in helpers/routing, except for the initial landing page and error pages
+<<<<<<< Updated upstream
 require 'helpers/helpers.php';
 
 // GET / : Homepage
@@ -31,6 +34,9 @@ $app->get('/site', function() use($app){
 $app->get('/sentEmails', function() use($app){
     require_once './sentEmails.php';
 });         
+=======
+require 'helpers/helpers.php';        
+>>>>>>> Stashed changes
 
 $app->error(function (\Exception $e) use ($app) {
 	if (strpos($_SERVER['REQUEST_URI'],'/api') === false) {
