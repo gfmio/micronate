@@ -2,8 +2,7 @@
 
 $app->get('/',function() use($app) {
     $app->render("landing.html", array(
-		"title" => "Micronate - Home",
-		"key" => "value"
+		"title" => "Micronate - Home"
 	));
 });
 
@@ -20,6 +19,57 @@ $app->get('/discover', function() use ($app) {
 		"title" => "Micronate - Discover"
 	));
 });
+
+// Sign up / in
+$app->get('/get-started', function() use ($app) {
+	$app->render("get_started.html", array(
+		"title" => "Micronate - Get started"
+	));
+});
+
+// Creating a campaign
+$app->get('/campagins/new', function() use ($app) {
+	$app->render("new_campaign.html", array(
+		"title" => "Micronate - New Campaign"
+	));
+});
+
+// Viewing a campaign
+$app->get('/campagins/:id', function($id) use ($app) {
+	$app->render("campaign.html", array(
+		"title" => "Micronate - CAMPAIGNNAME"
+	));
+});
+
+// Editing a campaign
+$app->get('/campagins/:id/edit', function($id) use ($app) {
+	$app->render("edit_campaign.html", array(
+		"title" => "Micronate - CAMPAIGNNAME - Edit Campaign"
+	));
+});
+
+// View Profile
+$app->get('/profile/:id', function($id) use ($app) {
+	$app->render("profile.html", array(
+		"title" => "Micronate - Profile"
+	));
+});
+
+// Edit Profile
+$app->get('/profile/:id/edit', function($id) use ($app) {
+	$app->render("edit_profile.html", array(
+		"title" => "Micronate - Edit Profile"
+	));
+});
+
+// View Transactions of the registered user
+$app->get('/profile/transactions', function($id) use ($app) {
+	$app->render("transactions.html", array(
+		"title" => "Micronate - Edit Profile"
+	));
+});
+
+
 
 // $app->get('/register', function() use($app){
 // 	$app->render("register.html");
