@@ -37,6 +37,12 @@ $app->post('/signup', function() use($app){
 	echo $newUID;
 });
 
+$app->post('/login', function() use($app){
+	$params = $app->request->post();
+	echo User::verifyCredentials($params['email'], $params['password']);
+	// create a User obj and keep it 
+});
+
 // Example GET request to a normal page
 $app->get('/home',function() use($app){
 	//regular html response

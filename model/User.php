@@ -21,7 +21,7 @@ class User {
     }
 
     DB::init();
-    
+
     $q = DB::$pdo->prepare("INSERT INTO user (email, username, password, first_name, last_name, location)
                        VALUES (:email, :username, :password, :first_name, :last_name, :location)");
 
@@ -32,7 +32,7 @@ class User {
             ':first_name' => $first_name,
             ':last_name' => $last_name,
             ':location' => $location,
-        ));
+    ));
 
     if ($rowsAffected == 0) {
       // throw exception?
@@ -44,6 +44,25 @@ class User {
 
   public static function verifyCredentials($email, $password) {
     // return $id from db or 0 if not valid
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+      return 0;
+    }
+
+    DB::init();
+    $q = DB::$pdo->prepare("SELECT id FROM user WHERE email = :email AND password = :password LIMIT 1");
+    $q->execute(array(
+        ':email' => $email,
+        ':password' => sha1($password . SALT),
+    ));
+
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+
+    if (empty($res))
+      return 0;
+
+    return $res['id'];
+    
   }
 
   public function __construct($id) {
