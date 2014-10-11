@@ -25,8 +25,8 @@ $app->get('/',function() use($app){
 });
 
 $app->error(function (\Exception $e) use ($app) {
-	if (strpos($_SERVER['REQUEST_URI'],'/api/') === false) {
-        // $app->render("error500.html");
+	if (strpos($_SERVER['REQUEST_URI'],'/api') === false) {
+        $app->render("error500.html", array(), 500);
     } else {
         APIrequest();
         $app->render(500, array(
@@ -37,8 +37,8 @@ $app->error(function (\Exception $e) use ($app) {
 });
 
 $app->notFound(function () use ($app) {
-    if (strpos($_SERVER['REQUEST_URI'],'/api/') === false) {
-        // $app->render("error404.html");
+    if (strpos($_SERVER['REQUEST_URI'],'/api') === false) {
+        $app->render("error404.html", array(), 404);
     } else {
         APIrequest();
         $app->render(404, array(
