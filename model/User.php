@@ -1,7 +1,7 @@
 <?php
 
 class User {
-    private final function salt() {
+    private static final function salt() {
         return 'GewwSgX0O_.-s V?_!`QYJ?P39[3wTLYW7mZkQ[{7/Q?!+1Bkri$KYM>e|)f,OmB';
     }
 
@@ -29,7 +29,7 @@ class User {
         $rowsAffected = $q->execute(array(
             ':email' => $email,
             ':username' => $username,
-            ':password' => sha1($password . SALT),
+            ':password' => sha1($password . self::SALT()),
             ':first_name' => $first_name,
             ':last_name' => $last_name,
             ':location' => $location,
@@ -54,7 +54,7 @@ class User {
         $q = DB::$pdo->prepare("SELECT id FROM user WHERE email = :email AND password = :password LIMIT 1");
         $q->execute(array(
             ':email' => $email,
-            ':password' => sha1($password . SALT),
+            ':password' => sha1($password . self::SALT()),
         ));
 
         $res = $q->fetch(PDO::FETCH_ASSOC);

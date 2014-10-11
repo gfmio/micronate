@@ -1,9 +1,6 @@
-<-- {data.name}, {data.surname}, {data.location}, {data.image}, {data.causes.title} -->
-
-<h3> {data.name} {data.surname} </h3>
+<h3> {data.firstname} {data.surname} </h3>
 <p> <b>Location</b>: {data.location}</p>
 <img src={data.image} alt="person1" style="width:228px;height:150px">
 
-<h3> Causes I contribute </h3>
-<h4> {data.causes.title} </h4> 
-<img src={data.causes.image} alt="cause1" style="width:100px;height:100px">
+<h3>Campaigns I contribute</h3>
+{view:contributed_campaigns:[]}

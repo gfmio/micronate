@@ -46,9 +46,7 @@ $app->get('/campagins/:id', function($id) use ($app) {
 		$app->render("error404.html", array(
             "title" => "Micronate - Error 404"
         ), 404);
-	}
-
-	
+	}	
 });
 
 // Editing a campaign
@@ -60,9 +58,20 @@ $app->get('/campagins/:id/edit', function($id) use ($app) {
 
 // View Profile
 $app->get('/profile/:id', function($id) use ($app) {
-	$app->render("profile.html", array(
-		"title" => "Micronate - Profile"
-	));
+	$user = new User($id);
+	if ($user->getId() !== NULL) {
+		$app->render("profile.html", array(
+			"title" => "Micronate - Profile",
+			"firstname" => $user->getFirstName(),
+			"surname" => $user->getLastName(),
+			"location" => $user->getLocation(),
+			"campaigns" => json_encode($user->getCampaigns())
+		));
+	} else {
+		$app->render("error404.html", array(
+            "title" => "Micronate - Error 404"
+        ), 404);
+	}
 });
 
 // Edit Profile
