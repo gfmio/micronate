@@ -11,6 +11,15 @@ class User {
   private $balance;
   private $stripeCard;
 
+  public static function createNew($email, $username, $password,
+                                   $first_name, $last_name, $location) {
+    // return $newId
+  }
+
+  public static function verifyCredentials($email, $password) {
+    // return $id from db or 0 if not valid
+  }
+
   public function __construct($id) {
     // get stuff from db
   }
@@ -58,6 +67,19 @@ class User {
   public function save() {
     // update db
   }
+
+  public function donate($amount, $campaign) {
+    // create and submit a donation
+  }
+
+  public function getAuthorizedApps() {
+    // retrieve apps that the user is using
+  }
+
+  public function getAppsDeveloped() {
+    // retrieve apps that the user is developer of
+  }
+
 }
 
 ?>

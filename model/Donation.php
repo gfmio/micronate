@@ -9,6 +9,12 @@ class Donation {
   private $dateTime;
   private $stripeCharge;
 
+  public static function process($user, $campaign, $amount) {
+    // Stripe transaction -- debit user's card -- keep reference to transaction
+    // save transaction in db and retrieve new id
+    // return $newId
+  }
+
   public function __construct($id) {
 
   }
@@ -32,7 +38,7 @@ class Donation {
   public function getStripeCharge() {
 
   }
-  
+
 }
 
 ?>

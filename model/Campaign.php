@@ -11,6 +11,13 @@ public Campaign {
   private $endDatetime;
   private $creator;
 
+  public static function createNew($creator, $title, $description,
+                                   $location, $goal, $startDatetime,
+                                   $endDatetime) {
+    // create in db and return id
+    //return $newId;
+  }
+
   public function __construct($id) {
 
   }
@@ -48,6 +55,9 @@ public Campaign {
     return $creator;
   }
 
+  public function getDonations() {
+    // return donations list
+  }
 }
 
 ?>
