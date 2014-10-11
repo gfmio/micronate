@@ -38,15 +38,23 @@ $app->get('/campagins/new', function() use ($app) {
 $app->get('/campagins/:id', function($id) use ($app) {
 	$campaign = new Campaign($id);
 
-	$app->render("campaign.html", array(
-		"title" => "Micronate - ".$campaign->title
-	));
+	if ($campaign->getId() !== NULL) {
+		$app->render("campaign.html", array(
+			"title" => "Micronate - ".$campaign->getTitle()
+		));
+	} else {
+		$app->render("error404.html", array(
+            "title" => "Micronate - Error 404"
+        ), 404);
+	}
+
+	
 });
 
 // Editing a campaign
 $app->get('/campagins/:id/edit', function($id) use ($app) {
 	$app->render("edit_campaign.html", array(
-		"title" => "Micronate - CAMPAIGNNAME - Edit Campaign"
+		"title" => "Micronate - ".$campaign->getTitle()." - Edit Campaign"
 	));
 });
 
@@ -67,7 +75,7 @@ $app->get('/profile/:id/edit', function($id) use ($app) {
 // View Transactions of the registered user
 $app->get('/profile/transactions', function($id) use ($app) {
 	$app->render("transactions.html", array(
-		"title" => "Micronate - Edit Profile"
+		"title" => "Micronate - User transactions"
 	));
 });
 
