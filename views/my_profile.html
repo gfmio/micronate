@@ -1,24 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title> Micronate - My Profile </title>
-</head>
+<-- {data.name}, {data.surname}, {data.location}, {data.email}, {data.balance}, {data.image}, {data.address}, {data.city}, {data.country}, {data.postcode}, {data.mobile}, {data.alternative}, {data.fullname}, {data.cardnumber}, {data.ccv}, {data.causes} -->
 
-<body>
-	<ul>
-		<li><a href="#">Home</a></li>
-		<li><a href="#">Discover</a></li>
-		<li><a href="#">Start a project</a></li>
-		<li><a href="#">Profile</a></li>
-	</ul>
-
-	<h3> Fred Smith </h3>
-	<p> <b>Location</b>: Basel &nbsp; &nbsp; <img src="../assets/images/edit.jpg" alt="edit"></p>
-	<p> <b>Email</b>: fred.smith@gmail.com &nbsp; &nbsp; <img src="../assets/images/edit.jpg" alt="edit"></p>
-	<p> <b>Balance</b>: 23 CHF <form action=""> <input type="button" value="Donate Now!"></form>
+	<h3> {data.name} {data.surname} </h3>
+	<p> <b>Location</b>: {data.location} &nbsp; &nbsp; <img src="../assets/images/edit.jpg" alt="edit"></p>
+	<p> <b>Email</b>: {data.email} &nbsp; &nbsp; <img src="../assets/images/edit.jpg" alt="edit"></p>
+	<p> <b>Balance</b>: {data.balance} <form action=""> <input type="button" value="Donate Now!"></form>
 	</p>
 
-	<img src="../assets/images/circular_person.jpg" alt="person1" style="width:228px;height:150px">
+	<img src={data.image} alt="person1" style="width:228px;height:150px">
 	<form name="input" method="get">
 		Change Image: <input type="text" name="user">
 		<input type="button" value="Upload">
@@ -45,26 +33,21 @@
 
 	<p>or</p><br>
 	<p><b>Address</b> &nbsp; &nbsp; <img src="../assets/images/edit.jpg" alt="edit"></p>
-	<p><b>Address</b>: 4th Baselstrasse</p>
-	<p><b>Town/City</b>: Basel</p>
-	<p><b>Country</b>: Switzerland</p>
-	<p><b>Postcode/zip</b>: 00301</p>
+	<p><b>Address</b>: {data.address}</p>
+	<p><b>Town/City</b>: {data.city}</p>
+	<p><b>Country</b>: {data.country}</p>
+	<p><b>Postcode/zip</b>: {data.postcode}</p>
 	<br>
 	<p><b>Telephone Number</b>&nbsp; &nbsp; <img src="../assets/images/edit.jpg" alt="edit"></p>
-	<p><b>Mobile Number</b>: 534634623</p>
-	<p><b>Alternative</b>: </p>
+	<p><b>Mobile Number</b>: {data.mobile}</p>
+	<p><b>Alternative</b>: {data.alternative} </p>
 	<br>
 	<p><b>Payment Card</b> &nbsp; &nbsp; <img src="../assets/images/edit.jpg" alt="edit"></p>
-	<p><b>Full Name</b> (as given in bank account):</p>
-	<p><b>Card Number</b>: ************1234</p>
-	<p><b>CCV</b>: ***</p>
+	<p><b>Full Name</b> (as given in bank account): {data.fullname}</p>
+	<p><b>Card Number</b>: {data.cardnumber}</p>
+	<p><b>CCV</b>: {data.ccv}</p>
 	<br>
 
 <h3> Causes I contribute </h3>
-<h4> Cause 1 </h4> 
-<img src="../assets/images/circular_image.jpg" alt="cause1" style="width:100px;height:100px">
-<h4> Cause 2 </h4> 
-<img src="../assets/images/circular_image.jpg" alt="cause2" style="width:100px;height:100px">
-
-</body>
-</html>
+<h4> {data.causes.title} </h4> 
+<img src={data.causes.image} alt="cause1" style="width:100px;height:100px">

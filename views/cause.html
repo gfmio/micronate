@@ -1,27 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title> Micronate - Cause Profile </title>
-</head>
+<-- data.title, data.creator, data.image, data.location, data.goal, data.reached, data.date, data.description -->
 
-<body>
-	<ul>
-		<li><a href="#">Home</a></li>
-		<li><a href="#">Discover</a></li>
-		<li><a href="#">Start a project</a></li>
-		<li><a href="#">Profile</a></li>
-	</ul>
+<h1> {data.title}
+<h3> {data.creator} </h3>
+<img src={data.image} alt="cause1" style="width:228px;height:228px">
+<p><b>Location</b>: {data.location}</p>
+<p><b>Goal</b>: {data.goal}       <b>Reached</b>: {data.reached}     <b>Deadline</b>: {data.date} </p>
 
-	<h3> by Josh </h3>
-	<img src="../assets/images/circular_image.jpg" alt="cause1" style="width:228px;height:228px">
-	<p><b>Location</b>: Basel</p>
-	<p><b>Goal</b>: 100CHF       <b>Reached</b>: 200CHF     <b>Deadline</b>: October 30, 2014 </p>
-
-	<h3> Short Description</h3>
-	<p> Last week the chemistry class got damages by an explosion caused during an experiment. We need to buy materials for the laboratory asap, in order to continue the classes without delays. </p>
-
-	<form action="">
-		<input type="button" value="Donate">
-	</form>
-</body>
-</html>
+<h3> Short Description</h3>
+<p> {data.description} </p>
+<form action="">
+	<input type="button" value="Donate">
+</form>
