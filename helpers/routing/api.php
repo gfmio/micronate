@@ -1,6 +1,5 @@
 <?php
 
-
 $app->group('/api', 'APIrequest', function () use ($app) {
 	// User
 
