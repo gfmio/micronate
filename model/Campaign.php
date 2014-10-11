@@ -102,6 +102,17 @@ public Campaign {
 
   public function getDonations() {
     // return donations list
+    DB::init();
+    $q = DB::$pdo->prepare("SELECT * FROM donation WHERE campaign_id = :campaign_id");
+    $q->execute(array(
+      'campaign_id' => $this->id;
+    ));
+
+    $donations = array();
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+    foreach($donation as $q) {
+      $donations[] = new Donation($donation['id']);
+    }
   }
 }
 

@@ -121,6 +121,18 @@ class User {
 
   public function getCampaigns() {
     // retrieve and return array of campaigns
+    DB::init();
+    $q = DB::$pdo->prepare("SELECT * FROM campaign WHERE creator_id = :user_id");
+    $q->execute(array(
+      ':user_id' => $this->id;
+    ));
+
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+    $campaigns = array();
+    foreach ($campaigns as $campaign)
+      $campaigns[] = new Campaign($campaign['id']);
+
+    return $campaigns;
 
   }
 
@@ -138,6 +150,7 @@ class User {
 
   public function donate($amount, $campaign) {
     // create and submit a donation
+    Donation::process($this, $campaign, $amount);
   }
 
   public function getAuthorizedApps() {

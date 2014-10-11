@@ -48,6 +48,10 @@ class Application {
 
   }
 
+  public function getId() {
+    return $this->id;
+  }
+
   public function getName() {
     return $this->name;
   }
@@ -65,6 +69,15 @@ class Application {
   }
 
   public function getAppUsers() {
+    DB::init();
+    $q = DB::$pdo->prepare('SELECT * FROM user_app_link WHERE application_id = :app_id');
+    $q->execute(array(
+        'app_id' = $this->getId();
+     ));
+
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+
+
 
   }
 
