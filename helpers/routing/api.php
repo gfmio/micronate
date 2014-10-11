@@ -1,12 +1,136 @@
 <?php
 
-// Example GET request to the API
-$app->get('/api','APIrequest',function() use($app){
-	//this request will have full json responses
 
-	$app->render(200,array(
-		'msg' => 'welcome to my API!',
-	));
+$app->group('/api', 'APIrequest', function () use ($app) {
+	// User
+
+	$app->get('/user',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->post('/user',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->put('/user',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->delete('/user',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	// Session
+
+	$app->post('/session',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->delete('/session',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	// Credit Card Details
+
+	$app->post('/user/payments/details',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->post('/user/payments/key',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->post('/user/payments/charge/:amount',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->get('/user/payments/transactions',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->post('/user/payments/donate/:project/:amount',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	// Projects
+
+	$app->get('/projects/:id',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->post('/projects',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->put('/projects/:id',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->delete('/projects/:id',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->get('/projects/transactions',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	// Messages
+
+	$app->get('/projects/:id/messages',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->post('/projects/:id/messages',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->put('/projects/:id/messages/:message',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
+
+	$app->delete('/projects/:id/messages',function() use ($app) {
+		$app->render(200,array(
+			'msg' => 'welcome to my API!',
+		));
+	});
 });
 
 $app->post('/api/authenticate_user', function() use($app){
