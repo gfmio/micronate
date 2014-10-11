@@ -20,7 +20,7 @@ $app = new \Slim\Slim(array(
 
 // GET / : Homepage
 $app->get('/',function() use($app){
-	echo "This is home.";
+	require_once 'views/landing.html';
 });
 
 $app->get('/register', function() use($app){
