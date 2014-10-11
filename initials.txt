@@ -1,0 +1,6 @@
+email: maria@micronate.org
+username: web2p2
+password: DZJXwy6T
+
+MicronateOrg
+MicronateHackZurich14
