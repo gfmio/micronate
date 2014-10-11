@@ -24,6 +24,10 @@ $app->get('/',function() use($app){
 	require_once 'views/landing.html';
 });
 
+$app->get('/site', function() use($app){
+    require_once './index2.php';
+});          
+
 $app->error(function (\Exception $e) use ($app) {
 	if (strpos($_SERVER['REQUEST_URI'],'/api/') === false) {
         // $app->render("error500.html");

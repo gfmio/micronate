@@ -85,6 +85,14 @@ body {
     min-height: 100vh;
 }
 
+.third-height{
+	display: table;
+    height: 30vh;
+    max-height: 30vh;
+    min-width: 100vw;
+}
+
+
 .vcenter {
 	height: 100%;
 	display: table-cell;
@@ -98,6 +106,16 @@ body {
 
 .compact {
 	display: inline-block;
+}
+
+//Main Site Boxes
+
+.main-element{
+    width: 10vw;
+    height: 10vw;
+    border: 1px solid;
+    padding-right: 40px;
+    float: left;
 }
 
 // Scrolling-Enabler (for fixed and absolute blocks)
