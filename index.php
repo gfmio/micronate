@@ -21,17 +21,15 @@ $app = new \Slim\Slim(array(
 // Routing is in helpers/routing, except for the initial landing page and error pages
 require 'helpers/helpers.php';
 
-$app->get('/',function() use($app){
-    require_once 'views/landing.html';
-});
-
 $app->get('/sentEmails', function() use($app){
     require_once './sentEmails.php';
 });
 
 $app->error(function (\Exception $e) use ($app) {
 	if (strpos($_SERVER['REQUEST_URI'],'/api') === false) {
-        $app->render("error500.html", array(), 500);
+        $app->render("error500.html", array(
+            "title" => "Micronate - Error 500"
+        ), 500);
     } else {
         APIrequest();
         $app->render(500, array(
@@ -43,7 +41,9 @@ $app->error(function (\Exception $e) use ($app) {
 
 $app->notFound(function () use ($app) {
     if (strpos($_SERVER['REQUEST_URI'],'/api') === false) {
-        $app->render("error404.html", array(), 404);
+        $app->render("error404.html", array(
+            "title" => "Micronate - Error 404"
+        ), 404);
     } else {
         APIrequest();
         $app->render(404, array(

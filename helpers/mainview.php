@@ -19,7 +19,7 @@ class MainView extends \Slim\View {
 <!doctype html>
 <html>
     <head>
-        <title>Micronate</title>
+        <title><?php echo $this->data["title"]; ?></title>
         
         <!--<base href="//micronate.org/">-->
         <base href="//localhost/micronate/">
@@ -52,7 +52,7 @@ class MainView extends \Slim\View {
 ?>
 
         <script type="text/javascript" src="assets/js/jquery-1.11.1.min.js"></script>
-
+        <script type="text/javascript" src="assets/js/app.js"></script>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -63,7 +63,6 @@ class MainView extends \Slim\View {
           ga('send', 'pageview');
 
         </script>
-    
     </body>
 </html>
 <?php
@@ -82,8 +81,8 @@ class MainView extends \Slim\View {
 
                 //[A-Za-z0-9\"\':\{\}\[\]_-+\/\\|*#:;,\.@]
                 $content = preg_replace_callback('/\{view:([a-zA-Z0-9_-]+):(\{(?:.*)\})\}/', function ($matches) {
-                    $view = new View();
-                    $view->setFile($matches[1].".html");
+                    $view = new MainView();
+                    $view->parse($matches[1].".html");
                     return $view->render(json_decode($matches[2]));
                 }, $content);
 

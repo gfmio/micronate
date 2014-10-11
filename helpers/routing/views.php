@@ -1,13 +1,24 @@
 <?php
 
+$app->get('/',function() use($app) {
+    $app->render("landing.html", array(
+		"title" => "Micronate - Home",
+		"key" => "value"
+	));
+});
+
 // GET / : Homepage
 $app->get('/site',function() use ($app) {
-	$app->render("main.html");
+	$app->render("main.html", array(
+		"title" => "Micronate - Home"
+	));
 });
 
 // GET /discover : Discover page
-$app->get('/discover',function() use ($app) {
-	$app->render("discover.html");
+$app->get('/discover', function() use ($app) {
+	$app->render("discover.html", array(
+		"title" => "Micronate - Discover"
+	));
 });
 
 // $app->get('/register', function() use($app){
