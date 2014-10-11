@@ -1,7 +1,7 @@
 <?php
 
 // GET / : Homepage
-$app->get('/',function() use ($app) {
+$app->get('/site',function() use ($app) {
 	$app->render("main.html");
 });
 

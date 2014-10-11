@@ -19,24 +19,15 @@ $app = new \Slim\Slim(array(
 
 // Including helper files (Everything is loaded from here)
 // Routing is in helpers/routing, except for the initial landing page and error pages
-<<<<<<< Updated upstream
 require 'helpers/helpers.php';
 
-// GET / : Homepage
 $app->get('/',function() use($app){
-	require_once 'views/landing.html';
+    require_once 'views/landing.html';
 });
-
-$app->get('/site', function() use($app){
-    require_once './index2.php';
-});   
 
 $app->get('/sentEmails', function() use($app){
     require_once './sentEmails.php';
-});         
-=======
-require 'helpers/helpers.php';        
->>>>>>> Stashed changes
+});
 
 $app->error(function (\Exception $e) use ($app) {
 	if (strpos($_SERVER['REQUEST_URI'],'/api') === false) {

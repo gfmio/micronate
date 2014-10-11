@@ -1,7 +1,7 @@
 <?php
 
 class MainView extends \Slim\View {
-	public $showWrapper = false;
+	public $showWrapper = true;
 
     public function render($template, $data = NULL) {
         if ($this->showWrapper) {
@@ -41,22 +41,6 @@ class MainView extends \Slim\View {
         <link rel="shortcut icon" href="./assets/favicon.png" type="image/png" />
     </head>
     <body>
-        <div class="frame full-width third-height bg-dark-grey landing parallax">
-            
-            
-            <div class="vcenter">
-                
-                <div class="center text-white" id="title-content">
-                    <h1 class="text-center text-xxhuge container center vmargin-top">
-                        <span class="text-orange">m</span><span class="text-turquois">N</span>
-                    </h1>
-                    <p class="text-center text-xxlarge container center vmargin-medium">
-                        Micronate. Making donating <span class="text-orange">simple</span> and <span class="text-turquois">transparent</span>.
-                    </p>
-                    
-                </div>
-            </div>
-        </div>
 <?php
     	$content = ob_get_contents();
     	ob_end_clean();
@@ -66,16 +50,6 @@ class MainView extends \Slim\View {
     public function footer() {
 		ob_start();
 ?>
-
-<div class="frame full-width parallax">
-            <div class="vcenter">   
-            <footer class="bottom frame vpadding-small">
-                    <p class="text-left text-white text-center container center">
-                        Copyright &copy; by Micronate 2014. <a target="_blank" href="https://twitter.com/MicronateOrg" class="text-orange">@MicronateOrg</a>. Crafted with love at <a target="_blank" href="http://www.hackzurich.com/14">HackZurich 2014</a>. Image © Pro Juventute. 
-                    </p>
-                </footer>
-            </div>
-        </div>
 
         <script type="text/javascript" src="assets/js/jquery-1.11.1.min.js"></script>
 
