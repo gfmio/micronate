@@ -1,0 +1,111 @@
+// Adjust size
+// returns desired size relative to font size (similar to rem, but more flexible)
+@function adjust-size($size, $font-size) {
+    @return em(strip-units(em($size)) / strip-units(em($font-size)));
+}
+
+// em function
+// Converts units into ems or turns a number into an em-size
+@function em($number) {
+    @if unit($number) == "em" {
+        @return strip-units($number) * 1.0em;
+    } @else if unit($number) == "rem" {
+        @return strip-units($number) * 1.0em;
+    } @else if unit($number) == "%" {
+        @return strip-units($number) * 1.0em;
+    } @else if unit($number) == "px" {
+        @return strip-units($number) / 16.0 * 1.0em;
+    } @else if unit($number) == "pt" {
+        @return strip-units($number) / 12.0 * 1.0em;
+    } @else if unit($number) == "" {
+        @return strip-units($number) * 1.0em;
+    } @else {
+        @return false;
+    }
+}
+
+// Grid-line-height
+// Determines the appropriate line-height for a respective font-size based on the base-line grid
+@function grid-line-height($font-size, $min-line-height: 1.2) {
+    $result: strip-units(ceil(strip-units(adjust-size(strip-units($font-size), strip-units($base-line-height)))) * 
+        adjust-size(strip-units($base-line-height), strip-units($font-size)));
+
+    @if $result < $min-line-height {
+    	$result: strip-units(ceil(1.0+strip-units(adjust-size(strip-units($font-size), strip-units($base-line-height)))) * 
+        	adjust-size(strip-units($base-line-height), strip-units($font-size)));
+    }
+
+    @return $result;
+}
+
+// HSB color helper
+@function hsb($hue, $saturation, $brightness) {
+	@if (unit($saturation) != "%") {
+		@if ($saturation > 1) {
+			$saturation: $saturation * 1%;
+		} @else {
+			$saturation: $saturation * 100%;
+		}
+	}
+	@if (unit($brightness) != "%") {
+		@if ($brightness > 1) {
+			$brightness: $brightness * 1%;
+		} @else {
+			$brightness: $brightness * 100%;
+		}
+	}
+
+	$saturation: strip-units($saturation);
+	$brightness: strip-units($brightness);
+
+	$l: strip-units(0.5*$brightness*(2.0 - $saturation));
+	@debug($l);
+	$s: 1.0;
+	@if ($l == 1.0) or ($l == 0.0) {
+		$s: 0.0;
+	} @else {
+		$s: strip-units($brightness * $saturation / (1.0 - abs(2.0*$l - 1)));
+	}
+	@return hsl($hue, $s*100%, $l*100%);
+}
+
+// Strip units
+@function strip-units($number) {
+    @if unit($number) == "%" {
+        @return $number / (100 * ($number * 0 + 1));
+    }
+    @return $number / ($number * 0 + 1);
+}
+
+// Clearfix
+@mixin clearfix {
+    // For modern browsers
+    &:before,
+    &:after
+    {
+        content:"";
+        display:block;
+        overflow:hidden;
+    }
+
+    &:after
+    {
+        clear:both;
+    }
+
+    //For IE 6/7 (trigger hasLayout)
+    &
+    {
+        zoom: 1;
+    }
+}
+
+// Transition
+@mixin transition($t) {
+  -moz-transition: $t;
+  -webkit-transition: $t;
+  -o-transition: $t;
+  -ms-transition: $t;
+  transition: $t;
+} 
+

@@ -15,3 +15,17 @@ Project members:
 Notes:
 
 * Circle diagrams http://www.chartjs.org/
+
+Design parameters:
+
+Convincing, close, empathy, warm, friendly
+https://color.adobe.com/de/pastell-6-color-theme-4079461
+
+Yellow: hsb(47,49,92) #EAD177
+Orange: hsb(9,68,85) #D95B45
+Red: hsb(351,79,76) #C12940
+Darkred: hsb(337,58,33) #552437
+Turquois: hsb(184,33,48) #52787B
+
+Thin lines, Warm feel, space, large imagery
+Fonts: Roboto Slab, perhaps Lato?
