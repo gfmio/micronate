@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.20)
 # Database: micronate_db
-# Generation Time: 2014-10-11 05:30:30 +0000
+# Generation Time: 2014-10-11 18:11:22 +0000
 # ************************************************************
 
 
@@ -29,7 +29,8 @@ CREATE TABLE `application` (
   `id` int(11) NOT NULL,
   `name` int(11) NOT NULL,
   `secret_key` text COLLATE utf32_unicode_ci NOT NULL,
-  `publishable_key` text COLLATE utf32_unicode_ci NOT NULL
+  `publishable_key` text COLLATE utf32_unicode_ci NOT NULL,
+  `developer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
 
 
@@ -64,7 +65,22 @@ CREATE TABLE `donation` (
   `campaign_id` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   `date_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `stripe_charge_id` text COLLATE utf32_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+
+
+# Dump of table message
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `message`;
+
+CREATE TABLE `message` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `content` text COLLATE utf32_unicode_ci NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `campaign_id` int(11) NOT NULL,
+  `date_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
 
@@ -78,7 +94,7 @@ DROP TABLE IF EXISTS `micro_transaction`;
 CREATE TABLE `micro_transaction` (
   `id` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
-  `date_time` int(11) NOT NULL,
+  `date_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `application_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
@@ -124,6 +140,7 @@ CREATE TABLE `user_app_link` (
   `user_id` int(11) NOT NULL,
   `application_id` int(11) NOT NULL,
   `monthly_limit` int(11) NOT NULL,
+  `user_token` text COLLATE utf32_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `user_id` (`user_id`,`application_id`),
