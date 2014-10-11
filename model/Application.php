@@ -17,15 +17,15 @@ class Application {
   }
 
   public function getName() {
-    return $name;
+    return $this->name;
   }
 
   public function getSecretKey() {
-    return $secret_key;
+    return $this->secret_key;
   }
 
   public function getPublishableKey() {
-    return $publishable_key;
+    return $this->publishable_key;
   }
 
   public function getAppUsers() {
@@ -37,7 +37,7 @@ class Application {
   }
 
   public function getMicroTransactionsForUser($user) {
-    
+
   }
 
   public function getAmountDonatedByUser($user) {

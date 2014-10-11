@@ -62,51 +62,74 @@ class User {
       return 0;
 
     return $res['id'];
-    
+
   }
 
   public function __construct($id) {
+
     // get stuff from db
+    DB::init();
+    $q = DB::$pdo->prepare("SELECT * FROM user WHERE id = :id LIMIT 1");
+    $q->execute(array(
+        ':id' => $id,
+    ));
+
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+
+    $this->id = $res['id'];
+    $this->first_name = $res['first_name'];
+    $this->last_name = $res['last_name'];
+    $this->email = $res['email'];
+    $this->username = $res['username'];
+    $this->location = $res['location'];
+    $this->balance = $res['balance'];
+    $this->stripeCard = $res['stripe_card_token'];
+
+  }
+
+  public function getId() {
+    return $this->id;
   }
 
   public function getFirstName() {
-    return $first_name;
+    return $this->first_name;
   }
 
   public function getLastName() {
-    return $last_name;
+    return $this->last_name;
   }
 
   public function getEmail() {
-    return $email;
+    return $this->email;
   }
 
   public function getUsername() {
-    return $username;
+    return $this->username;
   }
 
   public function getLocation() {
-    return $location;
+    return $this->location;
   }
 
   public function getBalance() {
-    return $balance;
+    return $this->balance;
   }
 
   public function getStripeCard() {
-    return $stripeCard;
+    return $this->stripeCard;
   }
 
   public function getCampaigns() {
     // retrieve and return array of campaigns
+
   }
 
   public function setLocation($newLocation) {
-    $location = $newLocation;
+    $this->location = $newLocation;
   }
 
   public function setCard($newCard) {
-    $stripeCard = $newCard;
+    $this->stripeCard = $newCard;
   }
 
   public function save() {
