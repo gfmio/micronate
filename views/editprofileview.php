@@ -1,4 +1,8 @@
-<-- {data.firstname}, {data.surname}, {data.location}, {data.email}, {data.balance}, {data.image}, {data.address}, {data.city}, {data.country}, {data.postcode}, {data.mobile}, {data.alternative}, {data.fullname}, {data.cardnumber}, {data.ccv}, {data.causes} -->
+<?php
+
+class EditProfileView extends SimpleView {
+	function _render() {
+		?>
 
 <h3> {data.firstname} {data.surname} </h3>
 <p> <b>Location</b>: {data.location} &nbsp; &nbsp; <img src="../assets/images/edit.jpg" alt="edit"></p>
@@ -49,3 +53,7 @@
 <h3> Causes I contribute </h3>
 <h4> {data.causes.title} </h4> 
 <img src={data.causes.image} alt="cause1" style="width:100px;height:100px">
+
+		<?php
+	}
+}

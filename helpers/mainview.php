@@ -68,46 +68,4 @@ class MainView extends \Slim\View {
     	ob_end_clean();
     	return $content;
     }
-
-    // public function parse($template, $data) {
-    //     try {
-    //         $content = file_get_contents('views/'.$template);
-    //         $oldContent = '';
-
-    //         while ($oldContent != $content) {
-    //             $oldContent = $content;
-
-    //             //[A-Za-z0-9\"\':\{\}\[\]_-+\/\\|*#:;,\.@]
-    //             $content = preg_replace_callback('/\{view:([a-zA-Z0-9_-]+):(\{(?:.*)\})\}/', function ($matches) {
-    //                 $view = new MainView();
-    //                 return $view->parse($matches[1].".html", json_decode($matches[2]));
-    //             }, $content);
-
-    //             // Arrays
-    //             $content = preg_replace_callback('/\{view:([a-zA-Z0-9_-]+):(\[(?:.*)\])\}/', function ($matches) {
-    //                 $view = new MainView();
-    //                 $arr = json_decode($matches[2]);
-    //                 $return = '';
-    //                 foreach ($arr as $a) {
-    //                     $return .= $view->parse($matches[1].".html", $a);
-    //                 }
-
-    //                 return $return;
-    //             }, $content);
-
-    //             $GLOBALS["data"] = $data;
-    //             preg_match_all("/\{data\.([a-zA-Z\.]+)\}/", $content, $matches);
-    //             //return print_r($matches);
-    //             $content = preg_replace_callback("/\{data\.([a-zA-Z\.]+)\}/", function ($matches) {
-    //                 return $GLOBALS["data"]->$matches[1];
-    //             }, $content);
-    //             unset($GLOBALS["data"]);
-    //         }
-
-    //         return $content;
-    //     } catch (Exception $e) {
-    //         $app = \Slim\Slim::getInstance();
-    //         $app->error($e);
-    //     }
-    // }
 }

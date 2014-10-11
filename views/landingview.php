@@ -1,3 +1,8 @@
+<?php
+
+class LandingView extends SimpleView {
+	function _render() {
+		?>
 		<div class="frame full-width full-height bg-darker-grey landing parallax">
 			<div class="vcenter">
 				<div class="center text-white" id="title-content">
@@ -40,3 +45,6 @@
 				</footer>
 			</div>
 		</div>
+		<?php
+	}
+}

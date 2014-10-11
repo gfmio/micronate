@@ -1,5 +1,8 @@
-<-- data.image or frame :) -->
+<?php
 
+class CreateCampaignView extends SimpleView {
+	function _render() {
+		?>
 <img src="{data.image}" alt="cause1" style="width:228px;height:228px">
 <form name="input" method="get">
 	Change Image: <input type="text" name="cause1">
@@ -16,3 +19,8 @@
 		<input type="button" value="Start Campaign!">
 	</form>
 </form>
+		<?php
+	}
+}
+
+

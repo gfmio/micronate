@@ -1,5 +1,8 @@
-<-- data.causes.id, {data.causes.title}, {data.causes.creator}, {data.causes.image}, {data.causes.location}, {data.causes.goal}, {data.causes.reached}, {data.causes.date}, {data.causes.description} -->
+<?php
 
+class DiscoverView extends SimpleView {
+	function _render() {
+		?>
 <h2> {data.causes.title} </h2>
 <h5> {data.causes.creator} </h5>
 <img src= alt= {data.causes.image} "cause1" style="width:228px;height:228px">
@@ -10,3 +13,7 @@
 <form action="">
 	<input type="button" value="Donate">
 </form>
+		<?php
+	}
+}
+

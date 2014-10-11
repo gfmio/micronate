@@ -1,6 +1,16 @@
 <?php
 
+require_once 'views/landingview.php';
+require_once 'views/homeview.php';
+require_once 'views/discoverview.php';
+require_once 'views/getstartedview.php';
+require_once 'views/newcampaignview.php';
+require_once 'views/campaignview.php';
+require_once 'views/editcampaignview.php';
 require_once 'views/profileview.php';
+require_once 'views/editprofileview.php';
+require_once 'views/usertransactionview.php';
+
 
 $app->get('/',function() use($app) {
     $app->render("LandingView", array(
@@ -131,25 +141,3 @@ $app->get('/profile/transactions', function($id) use ($app) {
 		"title" => "Micronate - User transactions"
 	));
 });
-
-
-
-// $app->get('/register', function() use($app){
-// 	$app->render("register.html");
-// });
-
-// $app->post('/signup', function() use($app){
-// 	$params = $app->request->post();
-
-// 	$newUID = User::createNew($params['email'], $params['username'],
-// 												    $params['pwd'], $params['firstname'],
-// 												    $params['lastname'], $params['location']);
-
-// 	echo $newUID;
-// });
-
-// $app->post('/login', function() use($app){
-// 	$params = $app->request->post();
-// 	echo User::verifyCredentials($params['email'], $params['password']);
-// 	// create a User obj and keep it 
-// });

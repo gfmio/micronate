@@ -1,3 +1,8 @@
+<?php
+
+class HomeView extends SimpleView {
+	function _render() {
+		?>
 {view:header:{}}
 		<div class="frame full-width full-height bg-darker-grey landing parallax hpadding-small">
 			<div class="vcenter">
@@ -26,3 +31,6 @@
 				</p>
 			</footer>
 		</div>
+		<?php
+	}
+}

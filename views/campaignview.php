@@ -1,5 +1,8 @@
-<-- data.title, data.creator, data.image, data.location, data.goal, data.reached, data.date, data.description -->
+<?php
 
+class CampaignView extends SimpleView {
+	function _render() {
+		?>
 <h1> {data.title}
 <h3> {data.creator} </h3>
 <img src={data.image} alt="cause1" style="width:228px;height:228px">
@@ -11,3 +14,7 @@
 <form action="">
 	<input type="button" value="Donate">
 </form>
+		<?php
+	}
+}
+
