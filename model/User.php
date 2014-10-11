@@ -1,5 +1,7 @@
 <?php
 
+define(SALT, 'GewwSgX0O_.-s V?_!`QYJ?P39[3wTLYW7mZkQ[{7/Q?!+1Bkri$KYM>e|)f,OmB');
+
 class User {
 
   private $id;
@@ -13,7 +15,31 @@ class User {
 
   public static function createNew($email, $username, $password,
                                    $first_name, $last_name, $location) {
-    // return $newId
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+      return 0;
+    }
+
+    DB::init();
+    
+    $q = DB::$pdo->prepare("INSERT INTO user (email, username, password, first_name, last_name, location)
+                       VALUES (:email, :username, :password, :first_name, :last_name, :location)");
+
+    $rowsAffected = $q->execute(array(
+            ':email' => $email,
+            ':username' => $username,
+            ':password' => sha1($password . SALT),
+            ':first_name' => $first_name,
+            ':last_name' => $last_name,
+            ':location' => $location,
+        ));
+
+    if ($rowsAffected == 0) {
+      // throw exception?
+      return 0;
+    }
+
+    return DB::$pdo->lastInsertId();
   }
 
   public static function verifyCredentials($email, $password) {
