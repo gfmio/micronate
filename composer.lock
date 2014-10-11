@@ -1,0 +1,263 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "779340e70fb354d7ace08941f717c1aa",
+    "packages": [
+        {
+            "name": "evernote/evernote-cloud-sdk-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/evernote/evernote-cloud-sdk-php.git",
+                "reference": "1a0caa297e523498d5ddd7c6c2d1ff9e672bfc2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/evernote/evernote-cloud-sdk-php/zipball/1a0caa297e523498d5ddd7c6c2d1ff9e672bfc2d",
+                "reference": "1a0caa297e523498d5ddd7c6c2d1ff9e672bfc2d",
+                "shasum": ""
+            },
+            "require": {
+                "ezyang/htmlpurifier": "~4.6.0",
+                "ohmy/auth": "~0.0.7",
+                "php": ">=5.3",
+                "tijsverkoyen/css-to-inline-styles": "~1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Evernote": "src/",
+                    "Thrift": "src/"
+                },
+                "classmap": [
+                    "src/EDAM"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache"
+            ],
+            "authors": [
+                {
+                    "name": "Laurent Sarrazin for Evernote",
+                    "email": "laurent@sarrazin.io",
+                    "homepage": "http://laurent.sarrazin.io",
+                    "role": "Lead developer"
+                }
+            ],
+            "description": "Evernote Cloud SDK for PHP",
+            "homepage": "https://github.com/evernote/evernote-cloud-sdk-php",
+            "keywords": [
+                "api",
+                "evernote",
+                "sdk"
+            ],
+            "time": "2014-10-03 01:37:57"
+        },
+        {
+            "name": "ezyang/htmlpurifier",
+            "version": "v4.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezyang/htmlpurifier.git",
+                "reference": "6f389f0f25b90d0b495308efcfa073981177f0fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/6f389f0f25b90d0b495308efcfa073981177f0fd",
+                "reference": "6f389f0f25b90d0b495308efcfa073981177f0fd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTMLPurifier": "library/"
+                },
+                "files": [
+                    "library/HTMLPurifier.composer.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Edward Z. Yang",
+                    "email": "admin@htmlpurifier.org",
+                    "homepage": "http://ezyang.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Standards compliant HTML filter written in PHP",
+            "homepage": "http://htmlpurifier.org/",
+            "keywords": [
+                "html"
+            ],
+            "time": "2013-11-30 08:25:19"
+        },
+        {
+            "name": "ohmy/auth",
+            "version": "0.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sudocode/ohmy-auth.git",
+                "reference": "508dfb5ee45f3827330f0627c599807f92ee0324"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sudocode/ohmy-auth/zipball/508dfb5ee45f3827330f0627c599807f92ee0324",
+                "reference": "508dfb5ee45f3827330f0627c599807f92ee0324",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ohmy": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "New BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Park",
+                    "email": "sudocoder@ymail.com",
+                    "homepage": "http://sudoco.de/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "OAuth so easy.. you won't even believe it's OAuth",
+            "homepage": "https://github.com/sudocode/ohmy-auth",
+            "keywords": [
+                "oauth"
+            ],
+            "time": "2014-04-13 06:34:13"
+        },
+        {
+            "name": "symfony/css-selector",
+            "version": "v2.5.5",
+            "target-dir": "Symfony/Component/CssSelector",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/CssSelector.git",
+                "reference": "caf5ecc3face1f22884fb74b8edab65ac5ba9976"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/CssSelector/zipball/caf5ecc3face1f22884fb74b8edab65ac5ba9976",
+                "reference": "caf5ecc3face1f22884fb74b8edab65ac5ba9976",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\CssSelector\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Jean-François Simon",
+                    "email": "jeanfrancois.simon@sensiolabs.com"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony CssSelector Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-09-22 09:14:18"
+        },
+        {
+            "name": "tijsverkoyen/css-to-inline-styles",
+            "version": "1.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tijsverkoyen/CssToInlineStyles.git",
+                "reference": "c50e8cd86acb0e528855c59653006e96d094a5b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/c50e8cd86acb0e528855c59653006e96d094a5b1",
+                "reference": "c50e8cd86acb0e528855c59653006e96d094a5b1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/css-selector": "~2.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TijsVerkoyen\\CssToInlineStyles\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Tijs Verkoyen",
+                    "email": "css_to_inline_styles@verkoyen.eu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
+            "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
+            "time": "2014-08-01 18:02:04"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "evernote/evernote-cloud-sdk-php": 20
+    },
+    "prefer-stable": false,
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}
