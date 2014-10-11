@@ -9,6 +9,7 @@ require_once 'Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 
 require_once 'helpers/mainview.php';
+require_once 'helpers/simpleview.php';
 
 global $app;
 $app = new \Slim\Slim(array(

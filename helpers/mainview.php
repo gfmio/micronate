@@ -1,15 +1,13 @@
 <?php
 
 class MainView extends \Slim\View {
-	public $showWrapper = true;
-
     public function render($template, $data = NULL) {
-        if ($this->showWrapper) {
-        	$return = $this->header().$this->parse($template, $this->data).$this->footer();
-        } else {
-        	$return = $this->parse($template, $this->data);
-        }
-
+    	// $return = $this->header().$this->parse($template, $this->data).$this->footer();
+        $return = $this->header();
+        $viewObj = new $template();
+        $viewObj->data = $this->data;
+        $return .= $viewObj->render();
+        $return .= $this->footer();
         return $return;
     }
 
@@ -71,45 +69,45 @@ class MainView extends \Slim\View {
     	return $content;
     }
 
-    public function parse($template, $data) {
-        try {
-            $content = file_get_contents('views/'.$template);
-            $oldContent = '';
+    // public function parse($template, $data) {
+    //     try {
+    //         $content = file_get_contents('views/'.$template);
+    //         $oldContent = '';
 
-            while ($oldContent != $content) {
-                $oldContent = $content;
+    //         while ($oldContent != $content) {
+    //             $oldContent = $content;
 
-                //[A-Za-z0-9\"\':\{\}\[\]_-+\/\\|*#:;,\.@]
-                $content = preg_replace_callback('/\{view:([a-zA-Z0-9_-]+):(\{(?:.*)\})\}/', function ($matches) {
-                    $view = new MainView();
-                    return $view->parse($matches[1].".html", json_decode($matches[2]));
-                }, $content);
+    //             //[A-Za-z0-9\"\':\{\}\[\]_-+\/\\|*#:;,\.@]
+    //             $content = preg_replace_callback('/\{view:([a-zA-Z0-9_-]+):(\{(?:.*)\})\}/', function ($matches) {
+    //                 $view = new MainView();
+    //                 return $view->parse($matches[1].".html", json_decode($matches[2]));
+    //             }, $content);
 
-                // Arrays
-                $content = preg_replace_callback('/\{view:([a-zA-Z0-9_-]+):(\[(?:.*)\])\}/', function ($matches) {
-                    $view = new MainView();
-                    $arr = json_decode($matches[2]);
-                    $return = '';
-                    foreach ($arr as $a) {
-                        $return .= $view->parse($matches[1].".html", $a);
-                    }
+    //             // Arrays
+    //             $content = preg_replace_callback('/\{view:([a-zA-Z0-9_-]+):(\[(?:.*)\])\}/', function ($matches) {
+    //                 $view = new MainView();
+    //                 $arr = json_decode($matches[2]);
+    //                 $return = '';
+    //                 foreach ($arr as $a) {
+    //                     $return .= $view->parse($matches[1].".html", $a);
+    //                 }
 
-                    return $return;
-                }, $content);
+    //                 return $return;
+    //             }, $content);
 
-                $GLOBALS["data"] = $data;
-                preg_match_all("/\{data\.([a-zA-Z\.]+)\}/", $content, $matches);
-                //return print_r($matches);
-                $content = preg_replace_callback("/\{data\.([a-zA-Z\.]+)\}/", function ($matches) {
-                    return $GLOBALS["data"]->$matches[1];
-                }, $content);
-                unset($GLOBALS["data"]);
-            }
+    //             $GLOBALS["data"] = $data;
+    //             preg_match_all("/\{data\.([a-zA-Z\.]+)\}/", $content, $matches);
+    //             //return print_r($matches);
+    //             $content = preg_replace_callback("/\{data\.([a-zA-Z\.]+)\}/", function ($matches) {
+    //                 return $GLOBALS["data"]->$matches[1];
+    //             }, $content);
+    //             unset($GLOBALS["data"]);
+    //         }
 
-            return $content;
-        } catch (Exception $e) {
-            $app = \Slim\Slim::getInstance();
-            $app->error($e);
-        }
-    }
+    //         return $content;
+    //     } catch (Exception $e) {
+    //         $app = \Slim\Slim::getInstance();
+    //         $app->error($e);
+    //     }
+    // }
 }

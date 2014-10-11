@@ -1,35 +1,75 @@
 <?php
 
+require_once 'views/profileview.php';
+
 $app->get('/',function() use($app) {
-    $app->render("landing.html", array(
+    $app->render("LandingView", array(
 		"title" => "Micronate - Home"
 	));
 });
 
 // GET / : Homepage
 $app->get('/site',function() use ($app) {
-	$app->render("main.html", array(
+	$app->render("HomeView", array(
 		"title" => "Micronate - Home"
 	));
 });
 
 // GET /discover : Discover page
 $app->get('/discover', function() use ($app) {
-	$app->render("discover.html", array(
-		"title" => "Micronate - Discover"
+	// Data to be provided
+
+	// Test data
+
+	$campaigns = array();
+	$campaigns[] = new StdClass();
+	$campaigns[0]->id = 1;
+	$campaigns[0]->title = "Example Title 1";
+	$campaigns[0]->description = "Lorem ipsum dolor sit amet. And some more...";
+	$campaigns[0]->location = new StdClass();
+	$campaigns[0]->location->longitude = -0.04;
+	$campaigns[0]->location->latitude = 48.0;
+	$campaigns[0]->goal = 20000; // $200.00
+	$campaigns[0]->startDateTime = new DateTime();
+	$campaigns[0]->startDateTime->setDate(2014, 9, 1);
+	$campaigns[0]->startDateTime->setTime(12, 0, 0);
+	$campaigns[0]->endDateTime = new DateTime();
+	$campaigns[0]->endDateTime->setDate(2014, 12, 1);
+	$campaigns[0]->endDateTime->setTime(12, 0, 0);
+	$campaigns[0]->creator_id = 3;
+	
+	$campaigns[] = new StdClass();
+	$campaigns[1]->id = 2;
+	$campaigns[1]->title = "Example Title 2";
+	$campaigns[1]->description = "Lorem ipsum dolor sit amet. And some more... And even more.";
+	$campaigns[1]->location = new StdClass();
+	$campaigns[1]->location->longitude = -0.04;
+	$campaigns[1]->location->latitude = -48.0;
+	$campaigns[1]->goal = 30000; // $300.00
+	$campaigns[1]->startDateTime = new DateTime();
+	$campaigns[1]->startDateTime->setDate(2014, 8, 15);
+	$campaigns[1]->startDateTime->setTime(12, 0, 0);
+	$campaigns[1]->endDateTime = new DateTime();
+	$campaigns[1]->endDateTime->setDate(2014, 11, 1);
+	$campaigns[1]->endDateTime->setTime(18, 0, 0);
+	$campaigns[1]->creator_id = 4;
+	
+	$app->render("DiscoverView", array(
+		"title" => "Micronate - Discover",
+		"campaigns" => $campaigns
 	));
 });
 
 // Sign up / in
 $app->get('/get-started', function() use ($app) {
-	$app->render("get_started.html", array(
+	$app->render("GetStartedView", array(
 		"title" => "Micronate - Get started"
 	));
 });
 
 // Creating a campaign
 $app->get('/campagins/new', function() use ($app) {
-	$app->render("new_campaign.html", array(
+	$app->render("NewCampaignView", array(
 		"title" => "Micronate - New Campaign"
 	));
 });
@@ -39,11 +79,11 @@ $app->get('/campagins/:id', function($id) use ($app) {
 	$campaign = new Campaign($id);
 
 	if ($campaign->getId() !== NULL) {
-		$app->render("campaign.html", array(
+		$app->render("CampaignView", array(
 			"title" => "Micronate - ".$campaign->getTitle()
 		));
 	} else {
-		$app->render("error404.html", array(
+		$app->render("Error404View", array(
             "title" => "Micronate - Error 404"
         ), 404);
 	}	
@@ -51,7 +91,7 @@ $app->get('/campagins/:id', function($id) use ($app) {
 
 // Editing a campaign
 $app->get('/campagins/:id/edit', function($id) use ($app) {
-	$app->render("edit_campaign.html", array(
+	$app->render("EditCampaignView", array(
 		"title" => "Micronate - ".$campaign->getTitle()." - Edit Campaign"
 	));
 });
@@ -60,15 +100,19 @@ $app->get('/campagins/:id/edit', function($id) use ($app) {
 $app->get('/profile/:id', function($id) use ($app) {
 	$user = new User($id);
 	if ($user->getId() !== NULL) {
-		$app->render("profile.html", array(
+
+		$userObj = new StdClass();
+		$userObj->firstName = $user->getFirstName();
+		$userObj->surname = $user->getLastName();
+		$userObj->location = $user->getLocation();
+		$userObj->campaigns = $user->getCampaigns();
+
+		$app->render("ProfileView", array(
 			"title" => "Micronate - Profile",
-			"firstname" => $user->getFirstName(),
-			"surname" => $user->getLastName(),
-			"location" => $user->getLocation(),
-			"campaigns" => json_encode($user->getCampaigns())
+			"user" => $userObj
 		));
 	} else {
-		$app->render("error404.html", array(
+		$app->render("Error404View", array(
             "title" => "Micronate - Error 404"
         ), 404);
 	}
@@ -76,14 +120,14 @@ $app->get('/profile/:id', function($id) use ($app) {
 
 // Edit Profile
 $app->get('/profile/:id/edit', function($id) use ($app) {
-	$app->render("edit_profile.html", array(
+	$app->render("EditProfileView", array(
 		"title" => "Micronate - Edit Profile"
 	));
 });
 
 // View Transactions of the registered user
 $app->get('/profile/transactions', function($id) use ($app) {
-	$app->render("transactions.html", array(
+	$app->render("UserTransactionView", array(
 		"title" => "Micronate - User transactions"
 	));
 });
