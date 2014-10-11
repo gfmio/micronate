@@ -59,7 +59,6 @@
 	$brightness: strip-units($brightness);
 
 	$l: strip-units(0.5*$brightness*(2.0 - $saturation));
-	@debug($l);
 	$s: 1.0;
 	@if ($l == 1.0) or ($l == 0.0) {
 		$s: 0.0;

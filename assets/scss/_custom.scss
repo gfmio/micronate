@@ -2,15 +2,29 @@
 	background-image: url(../../assets/images/landing.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
+	text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
 .landing a {
 	@extend .text-white;
 }
 
+@media (max-height: 768px) {
+	.landing .bottom {
+		position: relative;
+	}
+}
+
+@media (min-height: 768px) {
+	#title-content {
+		margin-top: -8.09em;
+	}
+}
+
 .container {
 	max-width: 33em;
 	width: 100%;
-	padding-left: 1.618rem;
-	padding-right: 1.618rem;
+	@extend .hmargin-medium;
+	padding-top: inherit;
+	padding-bottom: inherit;
 }

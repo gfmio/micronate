@@ -48,7 +48,8 @@ body {
 
 .center {
 	float: none !important;
-	margin: 0 auto;
+	margin-left: auto !important;
+	margin-right: auto !important;
 }
 
 .left {
@@ -66,7 +67,7 @@ body {
 }
 
 .invisible {
-	visibility: "hidden";
+	visibility: hidden;
 }
 
 // Container sizing
@@ -251,4 +252,58 @@ body {
 .text-xxhuge {
 	font-size: 6.354em;
 	line-height: grid-line-height(6.354em, 1.2);
+}
+
+// Distances
+
+.hpadding-small {
+	padding-left: $small-distance;
+	padding-right: $small-distance;
+}
+.hpadding-medium {
+	padding-left: $medium-distance;
+	padding-right: $medium-distance;
+}
+.hpadding-large {
+	padding-left: $large-distance;
+	padding-right: $large-distance;
+}
+
+.vpadding-small {
+	padding-top: $small-distance;
+	padding-bottom: $small-distance;
+}
+.vpadding-medium {
+	padding-top: $medium-distance;
+	padding-bottom: $medium-distance;
+}
+.vpadding-large {
+	padding-top: $large-distance;
+	padding-bottom: $large-distance;
+}
+
+.hmargin-small {
+	margin-left: $small-distance;
+	margin-right: $small-distance;
+}
+.hmargin-medium {
+	margin-left: $medium-distance;
+	margin-right: $medium-distance;
+}
+.hmargin-large {
+	margin-left: $large-distance;
+	margin-right: $large-distance;
+}
+
+.vmargin-small {
+	margin-top: $small-distance;
+	margin-bottom: $small-distance;
+}
+.vmargin-medium {
+	margin-top: $medium-distance;
+	margin-bottom: $medium-distance;
+}
+.vmargin-large {
+	margin-top: $large-distance;
+	margin-bottom: $large-distance;
 }
