@@ -82,8 +82,7 @@ class MainView extends \Slim\View {
                 //[A-Za-z0-9\"\':\{\}\[\]_-+\/\\|*#:;,\.@]
                 $content = preg_replace_callback('/\{view:([a-zA-Z0-9_-]+):(\{(?:.*)\})\}/', function ($matches) {
                     $view = new MainView();
-                    $view->parse($matches[1].".html");
-                    return $view->render(json_decode($matches[2]));
+                    return $view->parse($matches[1].".html", json_decode($matches[2]));
                 }, $content);
 
                 $GLOBALS["data"] = $data;

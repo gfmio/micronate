@@ -39,7 +39,7 @@ $app->get('/campagins/:id', function($id) use ($app) {
 	$campaign = new Campaign($id);
 
 	$app->render("campaign.html", array(
-		"title" => "Micronate - CAMPAIGNNAME"
+		"title" => "Micronate - ".$campaign->title
 	));
 });
 
