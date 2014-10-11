@@ -61,22 +61,22 @@ p + p {
 hr {
 	border:0;
 	height: 0.1em;
-	@extend .bg-dark-grey;
+	background-color: $dark-grey;
 }
 
 a {
 	text-decoration: none;
-	@extend .text-orange;
+	color: $orange;
 }
 
 a:link {
 	text-decoration: none;
-	@extend .text-orange;
+	color: $orange;
 }
 
 a:focus {
 	text-decoration: none;
-	@extend .text-turquois;
+	color: $turquois;
 }
 
 a:hover {

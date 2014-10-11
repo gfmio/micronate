@@ -500,7 +500,7 @@ body {
 .bg-medium-grey {
   background-color: #a69f9d !important; }
 
-.bg-dark-grey, hr {
+.bg-dark-grey {
   background-color: #666261 !important; }
 
 .bg-darker-grey {
@@ -512,7 +512,7 @@ body {
 .text-yellow {
   color: #ebd278 !important; }
 
-.text-orange, a, a:link {
+.text-orange {
   color: #d95b45 !important; }
 
 .text-red {
@@ -521,7 +521,7 @@ body {
 .text-darkred {
   color: #542336 !important; }
 
-.text-turquois, a:focus {
+.text-turquois {
   color: #52787a !important; }
 
 .text-white, .landing a {
@@ -655,16 +655,20 @@ p + p {
 
 hr {
   border: 0;
-  height: 0.1em; }
+  height: 0.1em;
+  background-color: #666261; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: #d95b45; }
 
 a:link {
-  text-decoration: none; }
+  text-decoration: none;
+  color: #d95b45; }
 
 a:focus {
-  text-decoration: none; }
+  text-decoration: none;
+  color: #52787a; }
 
 a:hover {
   text-decoration: underline; }

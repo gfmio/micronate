@@ -38,7 +38,7 @@ class MainView extends \Slim\View {
         
         <link href='assets/scss/style.css' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="shortcut icon" href="./assets/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="assets/favicon.png" type="image/png" />
     </head>
     <body>
 <?php
@@ -83,6 +83,18 @@ class MainView extends \Slim\View {
                 $content = preg_replace_callback('/\{view:([a-zA-Z0-9_-]+):(\{(?:.*)\})\}/', function ($matches) {
                     $view = new MainView();
                     return $view->parse($matches[1].".html", json_decode($matches[2]));
+                }, $content);
+
+                // Arrays
+                $content = preg_replace_callback('/\{view:([a-zA-Z0-9_-]+):(\[(?:.*)\])\}/', function ($matches) {
+                    $view = new MainView();
+                    $arr = json_decode($matches[2]);
+                    $return = '';
+                    foreach ($arr as $a) {
+                        $return .= $view->parse($matches[1].".html", $a);
+                    }
+
+                    return $return;
                 }, $content);
 
                 $GLOBALS["data"] = $data;
