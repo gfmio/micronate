@@ -165,6 +165,23 @@ class User {
     // retrieve apps that the user is developer of
   }
 
+  public function getMicroTransactions() {
+
+    DBO::init();
+    $q = DBO::$q->prepare("SELECT * FROM  micro_transaction WHERE user_id = :user_id ORDER BY date_time DESC");
+    $q->execute(array(
+        ':user_id', $user->getId(),
+    ));
+
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+
+    $transactions = array();
+    foreach ($res as $transaction) {
+      $transaction[] = new MicroTransaction($transaction['id']);
+    }
+
+  }
+
   public static function getUserId($user_token, $application_id) {
     // return ID if found, otherwise 0
     DB::init();
