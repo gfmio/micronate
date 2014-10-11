@@ -1,6 +1,5 @@
 <?php
 
-
 $app->group('/api', 'APIrequest', function () use ($app) {
 	// User
 
@@ -193,7 +192,7 @@ $app->post('/api/make_micro', function() use($app){
 	$status = $user->initiateMicro($application, $amount);
 
 	if ($status == 0) {
-		$app->render(200, array(
+		$app->render(400, array(
 				'status' => 'failed',
 				'msg' => 'Monthly limit reached for this app',
 		));
