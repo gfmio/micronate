@@ -413,7 +413,9 @@ body {
 
 .frame {
   display: table;
-  width: 100%; }
+  width: 100%;
+  padding-top: 1.618rem;
+  padding-bottom: 1.618rem; }
 
 .full-height {
   display: table;
@@ -451,3 +453,128 @@ body {
 .parallax {
   background-attachment: fixed;
   background-position: center center; }
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+
+.bg-yellow {
+  background-color: #ebd278; }
+
+.bg-orange {
+  background-color: #d95b45; }
+
+.bg-red {
+  background-color: #c22940; }
+
+.bg-darkred {
+  background-color: #542336; }
+
+.bg-turquois {
+  background-color: #52787a; }
+
+.bg-white {
+  background-color: white; }
+
+.bg-lighter-grey {
+  background-color: #f2e8e6; }
+
+.bg-light-grey {
+  background-color: #ccc3c2; }
+
+.bg-medium-grey {
+  background-color: #a69f9d; }
+
+.bg-dark-grey {
+  background-color: #666261; }
+
+.bg-darker-grey {
+  background-color: #333130; }
+
+.bg-black {
+  background-color: #111111; }
+
+.text-yellow {
+  color: #ebd278; }
+
+.text-orange {
+  color: #d95b45; }
+
+.text-red {
+  color: #c22940; }
+
+.text-darkred {
+  color: #542336; }
+
+.text-turquois {
+  color: #52787a; }
+
+.text-white, .landing a {
+  color: white; }
+
+.text-lighter-grey {
+  color: #f2e8e6; }
+
+.text-light-grey {
+  color: #ccc3c2; }
+
+.text-medium-grey {
+  color: #a69f9d; }
+
+.text-dark-grey {
+  color: #666261; }
+
+.text-darker-grey {
+  color: #333130; }
+
+.text-black {
+  color: #111111; }
+
+body {
+  font-family: "Roboto Slab", "Georgia", "Times New Roman", serif;
+  font-size: 100%;
+  line-height: 1.618; }
+
+.text-xsmall {
+  font-size: 0.618em;
+  line-height: 2.61812; }
+
+.text-small {
+  font-size: 0.927em;
+  line-height: 1.74542; }
+
+.text-large {
+  font-size: 1.5em;
+  line-height: 2.15733; }
+
+.text-xlarge {
+  font-size: 1.618em;
+  line-height: 2; }
+
+.text-xxlarge {
+  font-size: 2.427em;
+  line-height: 1.33333; }
+
+.text-huge {
+  font-size: 3.927em;
+  line-height: 1.23606; }
+
+.text-xhuge {
+  font-size: 4.236em;
+  line-height: 1.52786; }
+
+.text-xxhuge {
+  font-size: 6.354em;
+  line-height: 1.27321; }
+
+.landing {
+  background-image: url(../../assets/images/landing.jpg);
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+.container {
+  max-width: 33em;
+  width: 100%;
+  padding-left: 1.618rem;
+  padding-right: 1.618rem; }
