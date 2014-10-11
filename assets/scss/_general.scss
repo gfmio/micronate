@@ -157,87 +157,81 @@ body {
 
 // Background color styles
 .bg-yellow {
-	background-color: $yellow;
+	background-color: $yellow !important;
 }
 .bg-orange {
-	background-color: $orange;
+	background-color: $orange !important;
 }
 .bg-red {
-	background-color: $red;
+	background-color: $red !important;
 }
 .bg-darkred {
-	background-color: $darkred;
+	background-color: $darkred !important;
 }
 .bg-turquois {
-	background-color: $turquois;
+	background-color: $turquois !important;
 }
 .bg-white {
-	background-color: $white;
+	background-color: $white !important;
 }
 .bg-lighter-grey {
-	background-color: $lighter-grey;
+	background-color: $lighter-grey !important;
 }
 .bg-light-grey {
-	background-color: $light-grey;
+	background-color: $light-grey !important;
 }
 .bg-medium-grey {
-	background-color: $medium-grey;
+	background-color: $medium-grey !important;
 }
 .bg-dark-grey {
-	background-color: $dark-grey;
+	background-color: $dark-grey !important;
 }
 .bg-darker-grey {
-	background-color: $darker-grey;
+	background-color: $darker-grey !important;
 }
 .bg-black {
-	background-color: $black;
+	background-color: $black !important;
 }
 
 // Text color styles
 .text-yellow {
-	color: $yellow;
+	color: $yellow !important;
 }
 .text-orange {
-	color: $orange;
+	color: $orange !important;
 }
 .text-red {
-	color: $red;
+	color: $red !important;
 }
 .text-darkred {
-	color: $darkred;
+	color: $darkred !important;
 }
 .text-turquois {
-	color: $turquois;
+	color: $turquois !important;
 }
 .text-white {
-	color: $white;
+	color: $white !important;
 }
 .text-lighter-grey {
-	color: $lighter-grey;
+	color: $lighter-grey !important;
 }
 .text-light-grey {
-	color: $light-grey;
+	color: $light-grey !important;
 }
 .text-medium-grey {
-	color: $medium-grey;
+	color: $medium-grey !important;
 }
 .text-dark-grey {
-	color: $dark-grey;
+	color: $dark-grey !important;
 }
 .text-darker-grey {
-	color: $darker-grey;
+	color: $darker-grey !important;
 }
 .text-black {
-	color: $black;
+	color: $black !important;
 }
 
 // Fonts and Font sizes
-
-body {
-	font-family: "Roboto Slab", "Georgia", "Times New Roman", serif;
-	font-size: 100%;
-	line-height: 1.618;
-}
 
 .text-xsmall {
 	font-size: 0.618em;

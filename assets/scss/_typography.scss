@@ -1,0 +1,117 @@
+// Basic typography
+
+body, input, textarea, select {
+	font-family: "Roboto Slab", "Georgia", "Times New Roman", serif;
+	font-size: 100%;
+	line-height: 1.618;
+}
+
+i, em, blockquote {
+	font-style: italic;
+}
+
+b, strong {
+	font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 600;
+}
+
+h1 {
+	@extend .text-xxhuge;
+}
+
+h2 {
+	@extend .text-xhuge;
+}
+
+h3 {
+	@extend .text-huge;
+}
+
+h4 {
+	@extend .text-xxlarge;
+}
+
+h5 {
+	@extend .text-xlarge;
+}
+
+h6 {
+	@extend .text-large;
+}
+
+p {
+	text-justify:inter-character;
+	text-align-last:left;
+	page-break-after:always;
+	widows:4;
+	orphans:4;
+	hyphenate:auto;
+	hyphenate-before:2;
+	hyphenate-after:3;
+	hyphenate-lines:3;
+}
+
+p + p {
+	margin-top: 0.5 * 1.618em;
+}
+
+hr {
+	border:0;
+	height: 0.1em;
+	background-color: $dark-grey;
+}
+
+a {
+	text-decoration: none;
+	color: $orange;
+}
+
+a:link {
+	text-decoration: none;
+	color: $orange;
+}
+
+a:focus {
+	text-decoration: none;
+	color: $turquois;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+// code, pre {
+// 	@include group-style(code);
+// }
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+// dl, ol, ul {
+// 	@include group-style(list);
+// }
+
+// ul {
+// 	@include group-style(ul);
+// }
+
+// ol {
+// 	@include group-style(ol);
+// }
+
+// li {
+// 	@include group-style(li);	
+// }
+
+// dt {
+// 	@include group-style(dt);
+// }
+
+// dd {
+// 	@include group-style(dd);	
+// }

@@ -10,6 +10,8 @@ $app->group('/api', 'APIrequest', function () use ($app) {
 	});
 
 	$app->post('/user',function() use ($app) {
+		
+
 		$app->render(200,array(
 			'msg' => 'welcome to my API!',
 		));
@@ -147,7 +149,7 @@ $app->post('/api/authenticate_user', function() use($app){
 
 	$application = new Application($appId);
 
-	$userId = User::verifyCredentials($params['email'], $params['password']
+	$userId = User::verifyCredentials($params['email'], $params['password']);
 	if ($userId == 0) {
     	$app->render(401, array(
 					'msg' => 'User credentials not valid',

@@ -86,13 +86,49 @@ class Application {
 
   public function getMonthlyLimitForUser($user) {
 
+    DBO::init();
+    $q = DBO::$q->prepare("SELECT * FROM  user_app_link WHERE user_id = :user_id AND application_id = :app_id LIMIT 1");
+    $q->execute(array(
+        ':user_id', $user->getId(),
+        ':app_id', $this->getId(),
+    ));
+
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+    if (empty($res)) return 0;
+    return $res['monthly_limit'];
   }
 
   public function getMicroTransactionsForUser($user) {
 
+    DBO::init();
+    $q = DBO::$q->prepare("SELECT * FROM  micro_transaction WHERE user_id = :user_id AND application_id = :app_id");
+    $q->execute(array(
+        ':user_id', $user->getId(),
+        ':app_id', $this->getId(),
+    ));
+
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+
+    $transactions = array();
+    foreach ($res as $transaction) {
+      $transaction[] = new MicroTransaction($transaction['id']);
+    }
+    
+
   }
 
-  public function getTotalAmountForUser($user) {
+  public function getTotalAmountForUser($user) { // should be only for the current month
+
+    DBO::init();
+    $q = DBO::$q->prepare("SELECT SUM(amount) AS totalAmount FROM  micro_transaction WHERE user_id = :user_id AND application_id = :app_id ");
+    $q->execute(array(
+        ':user_id', $user->getId(),
+        ':app_id', $this->getId(),
+    ));
+
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+    if (empty($res)) return 0;
+    return $res['totalAmount'];
 
   }
 

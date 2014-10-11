@@ -1,7 +1,7 @@
 <?php
 
 class User {
-    private final function salt() {
+    private static final function salt() {
         return 'GewwSgX0O_.-s V?_!`QYJ?P39[3wTLYW7mZkQ[{7/Q?!+1Bkri$KYM>e|)f,OmB';
     }
 
@@ -23,13 +23,13 @@ class User {
 
         DB::init();
 
-        $q = DB::$pdo->prepare("INSERT INTO user (email, username, password, first_name, last_name, location) 
+        $q = DB::$pdo->prepare("INSERT INTO user (email, username, password, first_name, last_name, location)
             VALUES (:email, :username, :password, :first_name, :last_name, :location)");
 
         $rowsAffected = $q->execute(array(
             ':email' => $email,
             ':username' => $username,
-            ':password' => sha1($password . SALT),
+            ':password' => sha1($password . self::SALT()),
             ':first_name' => $first_name,
             ':last_name' => $last_name,
             ':location' => $location,
@@ -54,7 +54,7 @@ class User {
         $q = DB::$pdo->prepare("SELECT id FROM user WHERE email = :email AND password = :password LIMIT 1");
         $q->execute(array(
             ':email' => $email,
-            ':password' => sha1($password . SALT),
+            ':password' => sha1($password . self::SALT()),
         ));
 
         $res = $q->fetch(PDO::FETCH_ASSOC);
@@ -122,7 +122,7 @@ class User {
         DB::init();
         $q = DB::$pdo->prepare("SELECT * FROM campaign WHERE creator_id = :user_id");
         $q->execute(array(
-        ':user_id' => $this->id;
+        ':user_id' => $this->id
         ));
 
         $res = $q->fetch(PDO::FETCH_ASSOC);
@@ -141,53 +141,61 @@ class User {
         $this->stripeCard = $newCard;
     }
 
-<<<<<<< HEAD
     public function save() {
         // update db
     }
-=======
-  public function initiateMicro($application, $amount) {
-    return MicroTransaction::create($application, $this, $amount);
-  }
 
-  public function donate($amount, $campaign) {
-    // create and submit a donation
-    Donation::process($this, $campaign, $amount);
-  }
->>>>>>> FETCH_HEAD
+    public function initiateMicro($application, $amount) {
+      return MicroTransaction::create($application, $this, $amount);
+    }
 
     public function donate($amount, $campaign) {
-        // create and submit a donation
-        Donation::process($this, $campaign, $amount);
+      // create and submit a donation
+      Donation::process($this, $campaign, $amount);
     }
 
     public function getAuthorizedApps() {
         // retrieve apps that the user is using
     }
 
-<<<<<<< HEAD
+    public function getMicroTransactions() {
+
+      DBO::init();
+      $q = DBO::$q->prepare("SELECT * FROM  micro_transaction WHERE user_id = :user_id ORDER BY date_time DESC");
+      $q->execute(array(
+          ':user_id', $user->getId(),
+      ));
+
+      $res = $q->fetch(PDO::FETCH_ASSOC);
+
+      $transactions = array();
+      foreach ($res as $transaction) {
+        $transaction[] = new MicroTransaction($transaction['id']);
+      }
+
+    }
+
     public function getAppsDeveloped() {
         // retrieve apps that the user is developer of
     }
-=======
-  public static function getUserId($user_token, $application_id) {
-    // return ID if found, otherwise 0
-    DB::init();
-    $q = DB::$pdo->prepare('SELECT * FROM user_app_link WHERE user_token = :token AND application_id = :app_id LIMIT 1');
 
-    $q->execute(array(
-      ':token' => $user_token,
-      ':app_id' => $application_id,
-    ));
+    public static function getUserId($user_token, $application_id) {
+      // return ID if found, otherwise 0
+      DB::init();
+      $q = DB::$pdo->prepare('SELECT * FROM user_app_link WHERE user_token = :token AND application_id = :app_id LIMIT 1');
 
-    $res = $q->fetch(PDO::FETCH_ASSOC);
+      $q->execute(array(
+        ':token' => $user_token,
+        ':app_id' => $application_id,
+      ));
 
-    if (empty($res))
-      return 0;
+      $res = $q->fetch(PDO::FETCH_ASSOC);
 
-    return $res['user_id'];
-  }
->>>>>>> FETCH_HEAD
+      if (empty($res))
+        return 0;
+
+      return $res['user_id'];
+    }
 }
 
 ?>

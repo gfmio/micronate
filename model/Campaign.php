@@ -1,6 +1,6 @@
 <?php
 
-public Campaign {
+class Campaign {
 
   private $id;
   private $title;
@@ -105,7 +105,7 @@ public Campaign {
     DB::init();
     $q = DB::$pdo->prepare("SELECT * FROM donation WHERE campaign_id = :campaign_id");
     $q->execute(array(
-      'campaign_id' => $this->id;
+      'campaign_id' => $this->id
     ));
 
     $donations = array();

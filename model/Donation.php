@@ -7,16 +7,28 @@ class Donation {
   private $campaign_id;
   private $amount;
   private $dateTime;
-  private $stripeCharge;
 
   public static function process($user, $campaign, $amount) {
-    // Stripe transaction -- debit user's card -- keep reference to transaction
     // save transaction in db and retrieve new id
-    // return $newId
+
+    DB::init();
+    $q = DB::$pdo->prepare("INSERT INTO donation (user_id, campaign_id, amount)
+                            VALUES (:user_id, :campaign_id, :amount)");
+
+    $rowsAffected = $q->execute(array(
+        ':user_id' => $user->getId(),
+        ':campaign_id' => $campaign->getId(),
+        ':amount' => $amount,
+    ));
+
+    if ($rowsAffected == 0)
+      return 0;
+
+    return DB::$pdo->lastInsertId();
   }
 
   public function __construct($id) {
-    
+
     DB::init();
     $q = DB::$pdo->prepare("SELECT * FROM donation WHERE id = :id LIMIT 1");
     $q->execute(array(
@@ -47,10 +59,6 @@ class Donation {
 
   public function getDateTime() {
     return $dateTime;
-  }
-
-  public function getStripeCharge() {
-    return $stripeCharge;
   }
 
 }
