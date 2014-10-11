@@ -74,6 +74,8 @@ body {
 .frame {
 	display: table;
 	width: 100%;
+	padding-top: 1.618rem;
+	padding-bottom: 1.618rem;
 }
 
 .full-height {
@@ -124,6 +126,129 @@ body {
 	background-position: center center;
 }
 
-// General styles
+// Sticky bottom
 
+.bottom {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
 
+// General styles based on config config
+
+// Background color styles
+.bg-yellow {
+	background-color: $yellow;
+}
+.bg-orange {
+	background-color: $orange;
+}
+.bg-red {
+	background-color: $red;
+}
+.bg-darkred {
+	background-color: $darkred;
+}
+.bg-turquois {
+	background-color: $turquois;
+}
+.bg-white {
+	background-color: $white;
+}
+.bg-lighter-grey {
+	background-color: $lighter-grey;
+}
+.bg-light-grey {
+	background-color: $light-grey;
+}
+.bg-medium-grey {
+	background-color: $medium-grey;
+}
+.bg-dark-grey {
+	background-color: $dark-grey;
+}
+.bg-darker-grey {
+	background-color: $darker-grey;
+}
+.bg-black {
+	background-color: $black;
+}
+
+// Text color styles
+.text-yellow {
+	color: $yellow;
+}
+.text-orange {
+	color: $orange;
+}
+.text-red {
+	color: $red;
+}
+.text-darkred {
+	color: $darkred;
+}
+.text-turquois {
+	color: $turquois;
+}
+.text-white {
+	color: $white;
+}
+.text-lighter-grey {
+	color: $lighter-grey;
+}
+.text-light-grey {
+	color: $light-grey;
+}
+.text-medium-grey {
+	color: $medium-grey;
+}
+.text-dark-grey {
+	color: $dark-grey;
+}
+.text-darker-grey {
+	color: $darker-grey;
+}
+.text-black {
+	color: $black;
+}
+
+// Fonts and Font sizes
+
+body {
+	font-family: "Roboto Slab", "Georgia", "Times New Roman", serif;
+	font-size: 100%;
+	line-height: 1.618;
+}
+
+.text-xsmall {
+	font-size: 0.618em;
+	line-height: grid-line-height(0.618em, 1.2);
+}
+.text-small {
+	font-size: 0.927em;
+	line-height: grid-line-height(0.927em, 1.2);
+}
+.text-large {
+	font-size: 1.5em;
+	line-height: grid-line-height(1.5em, 1.2);
+}
+.text-xlarge {
+	font-size: 1.618em;
+	line-height: grid-line-height(1.618em, 1.2);
+}
+.text-xxlarge {
+	font-size: 2.427em;
+	line-height: grid-line-height(2.427em, 1.2);
+}
+.text-huge {
+	font-size: 3.927em;
+	line-height: grid-line-height(3.927em, 1.2);
+}
+.text-xhuge {
+	font-size: 4.236em;
+	line-height: grid-line-height(4.236em, 1.2);
+}
+.text-xxhuge {
+	font-size: 6.354em;
+	line-height: grid-line-height(6.354em, 1.2);
+}

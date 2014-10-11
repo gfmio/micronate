@@ -1,0 +1,16 @@
+.landing {
+	background-image: url(../../assets/images/landing.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.landing a {
+	@extend .text-white;
+}
+
+.container {
+	max-width: 33em;
+	width: 100%;
+	padding-left: 1.618rem;
+	padding-right: 1.618rem;
+}
