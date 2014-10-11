@@ -36,6 +36,8 @@ $app->get('/campagins/new', function() use ($app) {
 
 // Viewing a campaign
 $app->get('/campagins/:id', function($id) use ($app) {
+	$campaign = new Campaign($id);
+
 	$app->render("campaign.html", array(
 		"title" => "Micronate - CAMPAIGNNAME"
 	));
