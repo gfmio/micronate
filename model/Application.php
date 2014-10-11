@@ -77,6 +77,9 @@ class Application {
 
     $res = $q->fetch(PDO::FETCH_ASSOC);
 
+    foreach($res as $r) {
+        // do something blabla
+    }
 
 
   }
@@ -89,10 +92,26 @@ class Application {
 
   }
 
-  public function getAmountDonatedByUser($user) {
+  public function getTotalAmountForUser($user) {
 
   }
 
+  public static function findApplicationId($api_key) {
+
+    DB::init();
+    $q = DB::$pdo->prepare("SELECT * FROM application WHERE secret_key = :api_key LIMIT 1");
+
+    $q->execute(array(
+        ':api_key' => $api_key,
+    ));
+
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+
+    if (empty($res))
+      return 0;
+
+    return $res['id'];
+  }
 }
 
 ?>
