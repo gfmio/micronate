@@ -122,7 +122,7 @@ class User {
         DB::init();
         $q = DB::$pdo->prepare("SELECT * FROM campaign WHERE creator_id = :user_id");
         $q->execute(array(
-        ':user_id' => $this->id;
+        ':user_id' => $this->id
         ));
 
         $res = $q->fetch(PDO::FETCH_ASSOC);
@@ -152,11 +152,6 @@ class User {
     public function donate($amount, $campaign) {
       // create and submit a donation
       Donation::process($this, $campaign, $amount);
-    }
-
-    public function donate($amount, $campaign) {
-        // create and submit a donation
-        Donation::process($this, $campaign, $amount);
     }
 
     public function getAuthorizedApps() {

@@ -8,7 +8,7 @@ class Message {
   private $campaign_id;
   private $date_time;
 
-  public static create($content, $author, $campaign) {
+  public static function create($content, $author, $campaign) {
 
         DB::init();
 
