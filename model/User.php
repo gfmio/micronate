@@ -23,7 +23,7 @@ class User {
 
         DB::init();
 
-        $q = DB::$pdo->prepare("INSERT INTO user (email, username, password, first_name, last_name, location) 
+        $q = DB::$pdo->prepare("INSERT INTO user (email, username, password, first_name, last_name, location)
             VALUES (:email, :username, :password, :first_name, :last_name, :location)");
 
         $rowsAffected = $q->execute(array(
@@ -141,20 +141,18 @@ class User {
         $this->stripeCard = $newCard;
     }
 
-<<<<<<< HEAD
     public function save() {
         // update db
     }
-=======
-  public function initiateMicro($application, $amount) {
-    return MicroTransaction::create($application, $this, $amount);
-  }
 
-  public function donate($amount, $campaign) {
-    // create and submit a donation
-    Donation::process($this, $campaign, $amount);
-  }
->>>>>>> FETCH_HEAD
+    public function initiateMicro($application, $amount) {
+      return MicroTransaction::create($application, $this, $amount);
+    }
+
+    public function donate($amount, $campaign) {
+      // create and submit a donation
+      Donation::process($this, $campaign, $amount);
+    }
 
     public function donate($amount, $campaign) {
         // create and submit a donation
@@ -165,49 +163,44 @@ class User {
         // retrieve apps that the user is using
     }
 
-<<<<<<< HEAD
-  public function getMicroTransactions() {
+    public function getMicroTransactions() {
 
-    DBO::init();
-    $q = DBO::$q->prepare("SELECT * FROM  micro_transaction WHERE user_id = :user_id ORDER BY date_time DESC");
-    $q->execute(array(
-        ':user_id', $user->getId(),
-    ));
+      DBO::init();
+      $q = DBO::$q->prepare("SELECT * FROM  micro_transaction WHERE user_id = :user_id ORDER BY date_time DESC");
+      $q->execute(array(
+          ':user_id', $user->getId(),
+      ));
 
-    $res = $q->fetch(PDO::FETCH_ASSOC);
+      $res = $q->fetch(PDO::FETCH_ASSOC);
 
-    $transactions = array();
-    foreach ($res as $transaction) {
-      $transaction[] = new MicroTransaction($transaction['id']);
+      $transactions = array();
+      foreach ($res as $transaction) {
+        $transaction[] = new MicroTransaction($transaction['id']);
+      }
+
     }
 
-  }
-
-=======
-<<<<<<< HEAD
     public function getAppsDeveloped() {
         // retrieve apps that the user is developer of
     }
-=======
->>>>>>> FETCH_HEAD
-  public static function getUserId($user_token, $application_id) {
-    // return ID if found, otherwise 0
-    DB::init();
-    $q = DB::$pdo->prepare('SELECT * FROM user_app_link WHERE user_token = :token AND application_id = :app_id LIMIT 1');
 
-    $q->execute(array(
-      ':token' => $user_token,
-      ':app_id' => $application_id,
-    ));
+    public static function getUserId($user_token, $application_id) {
+      // return ID if found, otherwise 0
+      DB::init();
+      $q = DB::$pdo->prepare('SELECT * FROM user_app_link WHERE user_token = :token AND application_id = :app_id LIMIT 1');
 
-    $res = $q->fetch(PDO::FETCH_ASSOC);
+      $q->execute(array(
+        ':token' => $user_token,
+        ':app_id' => $application_id,
+      ));
 
-    if (empty($res))
-      return 0;
+      $res = $q->fetch(PDO::FETCH_ASSOC);
 
-    return $res['user_id'];
-  }
->>>>>>> FETCH_HEAD
+      if (empty($res))
+        return 0;
+
+      return $res['user_id'];
+    }
 }
 
 ?>
