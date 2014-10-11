@@ -1,4 +1,4 @@
-# Micronate
+# Micronate (micronate.org, @MicronateOrg)
 ## Transparent donations, integrated in daily life.
 
 This is our life (for the next 40 hours) :D
@@ -11,3 +11,7 @@ Project members:
 * Antonio Marino (contact@antoniomarino.me, @antoniomarino0)
 * Frédérique Mittelstaedt (me@gfm.io, @gfmio)
 * Maria Stylianou (marsty5@gmail.com, @marsty5)
+
+Notes:
+
+* Circle diagrams http://www.chartjs.org/
