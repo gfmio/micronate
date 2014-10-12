@@ -177,7 +177,7 @@ $app->get('/get-started', function() use ($app) {
 // Creating a campaign
 $app->get('/campaigns/new', function() use ($app) {
   if (!isset($_SESSION['userId']))
-    $app->redirect('/get-started');
+    $app->redirect('./get-started');
   $user = new User($_SESSION['userId']);
 
   $app->render("NewCampaignView", array(
@@ -191,7 +191,7 @@ $app->get('/campaigns/new', function() use ($app) {
 $app->get('/campaigns/:id', function($id) use ($app) {
 
   if (!isset($_SESSION['userId']))
-    $app->redirect('/get-started');
+    $app->redirect('./get-started');
   $user = new User($_SESSION['userId']);
 
   $campaignObj = new Campaign($id);
@@ -222,7 +222,7 @@ $app->get('/campaigns/:id', function($id) use ($app) {
 $app->get('/campaigns/:id/edit', function($id) use ($app) {
 
   if (!isset($_SESSION['userId']))
-    $app->redirect('/get-started');
+    $app->redirect('./get-started');
   $user = new User($_SESSION['userId']);
 
   $app->render("EditCampaignView", array(
@@ -236,7 +236,7 @@ $app->get('/campaigns/:id/edit', function($id) use ($app) {
 $app->get('/profile/:id', function($id) use ($app) {
 
   if (!isset($_SESSION['userId']))
-    $app->redirect('/get-started');
+    $app->redirect('./get-started');
   $loggedUser = new User($_SESSION['userId']);
 
   $user = new User($id);
@@ -267,7 +267,7 @@ $app->get('/profile/:id', function($id) use ($app) {
 $app->get('/profile/:id/edit', function($id) use ($app) {
 
   if (!isset($_SESSION['userId']))
-    $app->redirect('/get-started');
+    $app->redirect('./get-started');
   $user = new User($_SESSION['userId']);
 
   $app->render("EditProfileView", array(
@@ -281,7 +281,7 @@ $app->get('/profile/:id/edit', function($id) use ($app) {
 $app->get('/profile/transactions', function($id) use ($app) {
 
   if (!isset($_SESSION['userId']))
-    $app->redirect('/get-started');
+    $app->redirect('./get-started');
   $user = new User($_SESSION['userId']);
 
   $app->render("UserTransactionView", array(
@@ -310,7 +310,7 @@ $app->post('/signup', function() use($app){
   session_start();
   $_SESSION['userId'] = $newUID;
 
-  $app->redirect('/discover');
+  $app->redirect('./discover');
 });
 
 $app->post('/login', function() use($app){
@@ -320,19 +320,19 @@ $app->post('/login', function() use($app){
   session_start();
   $_SESSION['userId'] = $userId;
 
-  $app->redirect('/discover');
+  $app->redirect('./discover');
 
 });
 
 $app->get('/logout', function() use($app) {
   unset($_SESSION['userId']);
-  $app->redirect('/get-started');
+  $app->redirect('./get-started');
 });
 
 $app->post('/campaigns/create', function() use($app){
 
   if (!isset($_SESSION['userId']))
-    $app->redirect('/get-started');
+    $app->redirect('./get-started');
   $user = new User($_SESSION['userId']);
 
   $params = $app->request->post();
@@ -351,19 +351,19 @@ $app->post('/campaigns/create', function() use($app){
 $app->post('/campaigns/:id/addmessage', function($id) use($app){
 
   if (!isset($_SESSION['userId']))
-    $app->redirect('/get-started');
+    $app->redirect('./get-started');
   $user = new User($_SESSION['userId']);
 
   $params = $app->request->post();
 
   $newUID = Campaign::createNew( $params['content'], $user, new Campaign($id));
 
-  $app->redirect("/campaigns/:id");
+  $app->redirect("./campaigns/:id");
 });
 
 $app->post('/campaigns/:id/donate', function($id) use($app){
   if (!isset($_SESSION['userId']))
-    $app->redirect('/get-started');
+    $app->redirect('./get-started');
   $user = new User($_SESSION['userId']);
 
   $params = $app->request->post();
