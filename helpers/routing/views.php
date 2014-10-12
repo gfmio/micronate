@@ -342,4 +342,19 @@ $app->post('/campaigns/create', function() use(app){
 
   $app->redirect("/campaigns/{$newUID}");
 });
+
+
+$app->post('/campaigns/:id/addmessage', function($id) use(app){
+
+  if (!isset($_SESSION['userId']))
+    $app->redirect('/get-started');
+  $user = new User($_SESSION['userId']);
+
+  $params = $app->request->post();
+
+  $newUID = Campaign::createNew( $params['content'], $user, new Campaign($id));
+
+  $app->redirect("/campaigns/:id");
+});
+
 ?>
