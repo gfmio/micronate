@@ -64,10 +64,8 @@ function refactorCampaign($campaignObj) {
   $campaign->location->latitude = $campaignObj->getLatitude();
   $campaign->goal = $campaignObj->getGoal();
   $campaign->total_reached = $campaignObj->getTotalDonations();
-  // var_dump($campaignObj->getStartDatetime());
-  // var_dump(DateTime::createFromFormat('Y-m-d H:i:s', $campaignObj->getStartDatetime()));
-  $campaign->startDateTime = DateTime::createFromFormat('Y-m-d H:i:s', $campaignObj->getStartDatetime());
-  $campaign->endDateTime = DateTime::createFromFormat('Y-m-d H:i:s', $campaignObj->getEndDatetime());
+  $campaign->startDateTime = $campaignObj->getId();
+  $campaign->endDateTime = $campaignObj->getId();
 
   $creator = $campaignObj->getCreator();
   $campaign->creator_id = $creator->getId();
@@ -194,6 +192,7 @@ $app->get('/campaigns/:id', function($id) use ($app) {
 
   if (!isset($_SESSION['userId']))
     $app->redirect('../get-started');
+
   $user = new User($_SESSION['userId']);
 
   $campaignObj = new Campaign($id);
@@ -309,7 +308,6 @@ $app->post('/signup', function() use($app){
                              $params['pwd'], $params['first_name'],
                              $params['last_name'], "");
 
-  session_start();
   $_SESSION['userId'] = $newUID;
 
   $app->redirect('./discover');
@@ -319,7 +317,6 @@ $app->post('/login', function() use($app){
    $params = $app->request->post();
    $userId = User::verifyCredentials($params['email'], $params['password']);
 
-  session_start();
   $_SESSION['userId'] = $userId;
 
   $app->redirect('./discover');
