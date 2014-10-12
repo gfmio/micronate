@@ -211,7 +211,7 @@ $app->get('/campaigns/:id', function($id) use ($app) {
       "user_full_name" => $user->getFullName(),
       "user_image_url" => $user->getGravatarUrl(),
       "campaign" => $campaign,
-      "creator_name" => $creator->getFullName()
+      "creator_name" => $creator->getFullName(),
     ));
   } else {
     $app->render("Error404View", array(
