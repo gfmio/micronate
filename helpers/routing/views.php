@@ -28,9 +28,9 @@ function refactorMessage($messageObj) {
 }
 
 function refactorMessages($messageList) {
-  $donations = array();
-  foreach ($donatonsList as $donationObj) {
-    $donations[$i] = refactorCampaign($donationObj);
+  $messages = array();
+  foreach ($messageList as $messageObj) {
+    $messages[$i] = refactorCampaign($messageObj);
   }
   return $messages;
 }
@@ -48,7 +48,7 @@ function refactorDonation($donationObj) {
 
 function refactorDonations($donationsList) {
   $donations = array();
-  foreach ($donatonsList as $donationObj) {
+  foreach ($donationsList as $donationObj) {
     $donations[$i] = refactorCampaign($donationObj);
   }
   return $donations;
@@ -69,8 +69,8 @@ function refactorCampaign($campaignObj) {
 
   $creator = $campaignObj->getCreator();
   $campaign->creator_id = $creator->getId();
-  $campaign->creator_name = $creator->getName();
-  $campaign->creator_image = $creator->getImage();
+  $campaign->creator_name = $creator->getFullName();
+  $campaign->creator_image = $creator->getGravatarUrl();
 
   $campaign->donations = refactorDonations($campaignObj->getDonations());
 
