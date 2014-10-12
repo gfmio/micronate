@@ -193,7 +193,7 @@ $app->get('/campaigns/new', function() use ($app) {
 $app->get('/campaigns/:id', function($id) use ($app) {
 
   if (!isset($_SESSION['userId']))
-    $app->redirect('./get-started');
+    $app->redirect('../get-started');
   $user = new User($_SESSION['userId']);
 
   $campaignObj = new Campaign($id);

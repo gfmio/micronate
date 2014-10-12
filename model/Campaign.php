@@ -53,8 +53,8 @@ class Campaign {
     $this->description = $res['description'];
     $this->location = $res['location'];
     $this->goal = $res['goal'];
-    $this->start_datetime = $res['start_datetime'];
-    $this->end_datetime = $res['end_datetime'];
+    $this->startDatetime = $res['start_datetime'];
+    $this->endDatetime = $res['end_datetime'];
     $this->creator_id = $res['creator_id'];
 
   }
