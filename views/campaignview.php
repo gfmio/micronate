@@ -3,10 +3,18 @@
 class CampaignView extends SimpleView {
 	function _render() {
 		?>
-<h1> {data.title}
-<h3> {data.creator} </h3>
-<p><b>Location</b>: {data.location}</p>
-<img src={data.image} alt="cause1" style="width:228px;height:228px">
+		<?php $headerView = new HeaderView(); echo $headerView->render(); ?>
+		<div class="frame full-width bg-darker-grey landing parallax hpadding-small" style="height: 300px;">
+			<br>
+			<h1 class="text-center text-white vmargin-large">
+				<?php echo $this->data["title"]; ?>
+			</h1>
+		</div>
+		<h5 class="center">by <a href="./profile/<?php echo $this->data["creator_id"]; ?>"><?php echo $this->data["creator_name"]; ?></a><br/>
+			<?php echo $this->data["description"] ?><br/>
+			<?php echo $this->data["startDateTime"]->format('d M Y H:i'); ?> - <?php echo $this->data["endDateTime"]->format('d M Y H:i'); ?>
+		</h5>	
+
 <div class="full-width hpadding-small">
 	<div class="discover-container center">
 	<?php if (empty($this->data["donations"])): ?>

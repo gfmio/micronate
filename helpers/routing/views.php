@@ -203,6 +203,7 @@ $app->get('/campaigns/:id', function($id) use ($app) {
   }
 
   $campaign = refactorCampaign($campaignObj);
+  $creator = new User($campaign->creator_id);
 
   if ($campaignObj->getId() !== NULL) {
     $app->render("CampaignView", array(
@@ -210,6 +211,7 @@ $app->get('/campaigns/:id', function($id) use ($app) {
       "user_full_name" => $user->getFullName(),
       "user_image_url" => $user->getGravatarUrl(),
       "campaign" => $campaign,
+      "creator_name" => $creator->getFullName()
     ));
   } else {
     $app->render("Error404View", array(
