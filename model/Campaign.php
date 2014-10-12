@@ -127,7 +127,7 @@ class Campaign {
     DB::init();
     $q = DB::$pdo->prepare("SELECT * FROM campaign ORDER BY start_datetime DESC");
     $q->execute();
-    $res = $q->fetch(PDO::FETCH_ALL);
+    $res = $q->fetchAll(PDO::FETCH_ASSOC);
     $arr = array();
     foreach($res as $r) {
       $arr[] = new Campaign($r['id']);
