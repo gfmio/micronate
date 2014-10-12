@@ -17,7 +17,7 @@ class MainView extends \Slim\View {
 <!doctype html>
 <html>
     <head>
-        <title><?php echo $this->data["title"]; ?></title>
+        <title><?php echo $this->data["header_title"]; ?></title>
         
         <!--<base href="//micronate.org/">-->
         <base href="//localhost/micronate/">

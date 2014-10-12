@@ -106,14 +106,14 @@ function refactorTransactions($transactionsList) {
 
 $app->get('/',function() use($app) {
     $app->render("LandingView", array(
-    "title" => "Micronate - Home"
+    "header_title" => "Micronate - Home"
   ));
 });
 
 // GET / : Homepage
 $app->get('/site',function() use ($app) {
   $app->render("HomeView", array(
-    "title" => "Micronate - Home"
+    "header_title" => "Micronate - Home"
   ));
 });
 
@@ -161,7 +161,7 @@ $app->get('/discover', function() use ($app) {
 */
 
   $app->render("DiscoverView", array(
-    "title" => "Micronate - Discover",
+    "header_title" => "Micronate - Discover",
     "campaigns" => $campaigns,
   ));
 });
@@ -169,7 +169,7 @@ $app->get('/discover', function() use ($app) {
 // Sign up / in
 $app->get('/get-started', function() use ($app) {
   $app->render("GetStartedView", array(
-    "title" => "Micronate - Get started"
+    "header_title" => "Micronate - Get started"
   ));
 });
 
@@ -180,7 +180,7 @@ $app->get('/campaigns/new', function() use ($app) {
   $user = new User($_SESSION['userId']);
 
   $app->render("NewCampaignView", array(
-    "title" => "Micronate - New Campaign",
+    "header_title" => "Micronate - New Campaign",
     "user_full_name" => $user->getFullName(),
     "user_image_url" => $user->getGravatarUrl(),
   ));
@@ -197,7 +197,7 @@ $app->get('/campaigns/:id', function($id) use ($app) {
   $campaignObj = new Campaign($id);
   if ($campaignObj->getId() == NULL) {
     $app->render("Error404View", array(
-            "title" => "Micronate - Error 404"
+            "header_title" => "Micronate - Error 404"
         ), 404);
 
   }
@@ -206,14 +206,14 @@ $app->get('/campaigns/:id', function($id) use ($app) {
 
   if ($campaignObj->getId() !== NULL) {
     $app->render("CampaignView", array(
-      "title" => "Micronate - ".$campaignObj->getTitle(),
+      "header_title" => "Micronate - ".$campaignObj->getTitle(),
       "user_full_name" => $user->getFullName(),
       "user_image_url" => $user->getGravatarUrl(),
       "campaign" => $campaign,
     ));
   } else {
     $app->render("Error404View", array(
-            "title" => "Micronate - Error 404"
+            "header_title" => "Micronate - Error 404"
         ), 404);
   }
 });
@@ -226,7 +226,7 @@ $app->get('/campaigns/:id/edit', function($id) use ($app) {
   $user = new User($_SESSION['userId']);
 
   $app->render("EditCampaignView", array(
-    "title" => "Micronate - ".$campaign->getTitle()." - Edit Campaign",
+    "header_title" => "Micronate - ".$campaign->getTitle()." - Edit Campaign",
     "user_full_name" => $user->getFullName(),
     "user_image_url" => $user->getGravatarUrl(),
   ));
@@ -251,14 +251,14 @@ $app->get('/profile/:id', function($id) use ($app) {
     $userObj->campaigns = refactorCampaigns($user->getCampaigns());
 
     $app->render("ProfileView", array(
-      "title" => "Micronate - Profile",
+      "header_title" => "Micronate - Profile",
       "user" => $userObj,
       "logged_user_full_name" => $loggedUser->getFullName(),
       "logged_user_image_url" => $loggedUser->getGravatarUrl(),
     ));
   } else {
     $app->render("Error404View", array(
-            "title" => "Micronate - Error 404"
+            "header_title" => "Micronate - Error 404"
         ), 404);
   }
 });
@@ -271,7 +271,7 @@ $app->get('/profile/:id/edit', function($id) use ($app) {
   $user = new User($_SESSION['userId']);
 
   $app->render("EditProfileView", array(
-    "title" => "Micronate - Edit Profile",
+    "header_title" => "Micronate - Edit Profile",
     "user_full_name" => $user->getFullName(),
     "user_image_url" => $user->getGravatarUrl(),
   ));
@@ -285,7 +285,7 @@ $app->get('/profile/transactions', function($id) use ($app) {
   $user = new User($_SESSION['userId']);
 
   $app->render("UserTransactionView", array(
-    "title" => "Micronate - User transactions",
+    "header_title" => "Micronate - User transactions",
     "user_full_name" => $user->getFullName(),
     "user_image_url" => $user->getGravatarUrl(),
     "transactions" => refactorTransactions($user->getMicroTransactions()),
@@ -296,7 +296,7 @@ $app->get('/profile/transactions', function($id) use ($app) {
 
 $app->get('/usecase',function() use($app) {
     $app->render("sentEmailsview", array(
-		"title" => "Micronate - UseCase"
+		"header_title" => "Micronate - UseCase"
 	));
 });
 
