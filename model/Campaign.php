@@ -124,6 +124,19 @@ class Campaign {
     return $donations;
   }
 
+  public function getTotalDonations() {
+    // return donations list
+    DB::init();
+    $q = DB::$pdo->prepare("SELECT SUM(amount) as total FROM donation WHERE campaign_id = :campaign_id");
+    $q->execute(array(
+      ':campaign_id' => $this->id,
+    ));
+
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+    return $res['total'];
+
+  }
+
   public function getMessages() {
     DB::init();
     $q = DB::$pdo->prepare("SELECT * FROM message WHERE campaign_id = :campaign_id ORDER BY date_time DESC");

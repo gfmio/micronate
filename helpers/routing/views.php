@@ -63,6 +63,7 @@ function refactorCampaign($campaignObj) {
   $campaign->location->longitude = $campaignObj->getLongitude();
   $campaign->location->latitude = $campaignObj->getLatitude();
   $campaign->goal = $campaignObj->getGoal();
+  $campaign->total_reached = $campaignObj->getTotalDonations();
   $campaign->startDateTime = $campaignObj->getId();
   $campaign->endDateTime = $campaignObj->getId();
 
@@ -325,5 +326,22 @@ $app->get('/logout', function() use($app) {
   $app->redirect('/get-started');
 });
 
+$app->post('/campaigns/create', function() use(app){
+
+  if (!isset($_SESSION['userId']))
+    $app->redirect('/get-started');
+  $user = new User($_SESSION['userId']);
+
+  $params = $app->request->post();
+
+  $newUID = Campaign::createNew($user, $params['title'], $params['description'},
+                                   $params['location'], $params['goal'], $params['start_date'],
+                                   $params['end_date']);
+
+  if ($newUID == 0)
+    $app->redirect("/campaigns/new");
+
+  $app->redirect("/campaigns/{$newUID}");
+});
 ?>
 >>>>>>> bba48d1d03149c64d9351886f011af009e3d8d55
