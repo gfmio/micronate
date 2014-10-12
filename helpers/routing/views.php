@@ -325,7 +325,7 @@ $app->get('/logout', function() use($app) {
   $app->redirect('/get-started');
 });
 
-$app->post('/campaigns/create', function() use(app){
+$app->post('/campaigns/create', function() use($app){
 
   if (!isset($_SESSION['userId']))
     $app->redirect('/get-started');
@@ -333,7 +333,7 @@ $app->post('/campaigns/create', function() use(app){
 
   $params = $app->request->post();
 
-  $newUID = Campaign::createNew($user, $params['title'], $params['description'},
+  $newUID = Campaign::createNew($user, $params['title'], $params['description'],
                                    $params['location'], $params['goal'], $params['start_date'],
                                    $params['end_date']);
 
