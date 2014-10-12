@@ -27,13 +27,18 @@ class GetStartedView extends SimpleView {
 						<h3 class="text-white"> Sign in </h3>
 						<form action="login" method="POST" class='credentials-box text-darker-grey'>
 							<input required type="email" name="email" class="field hpadding-small vpadding-small" placeholder="E-mail" style="margin: 0; border: 0; border-bottom: #DDDDDD solid 1px;"><br>
-							<input required type="password" name="pwd" class="field hpadding-small vpadding-small" placeholder="Password" style="margin: 0; border: 0; border-bottom: #DDDDDD solid 1px;"><br>
+							<input required type="password" name="password" class="field hpadding-small vpadding-small" placeholder="Password" style="margin: 0; border: 0; border-bottom: #DDDDDD solid 1px;"><br>
 							<input class='bg-orange button text-white center hpadding-small vpadding-small' type="submit" value="Login" style="margin: 0; border: 0; width: 100%;">
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
+		<footer class="bottom frame vpadding-small" style="left: 0;">
+			<p class="text-left text-white text-center container center">
+				Copyright &copy; by Micronate 2014. <a target="_blank" href="https://twitter.com/MicronateOrg" class="text-orange">@MicronateOrg</a>. Crafted with love at <a target="_blank" href="http://www.hackzurich.com/14">HackZurich 2014</a>. Image © Pro Juventute. 
+			</p>
+		</footer>
 		<?php
 	}
 }
