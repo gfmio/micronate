@@ -3,32 +3,33 @@
 class GetStartedView extends SimpleView {
 	function _render() {
 		?>
-		{view:header:{}}
-		<div class="frame full-width full-height bg-darker-grey landing parallax hpadding-small">
+		<?php $headerView = new HeaderView(); echo $headerView->render(); ?>
+		<div class="frame full-width full-height bg-darker-grey parallax hpadding-small">
 			<div class="vcenter">
 				<div class="center text-white" id="title-content">
 					<h1 class="text-center text-xxhuge container center vmargin-medium">
 						<span class="text-orange">m</span><span class="text-turquois">N</span>
 					</h1>
-					<div class="text-center left text-small hpadding-large hmargin-large">
-					<h3> Sign Up </h3>
-					<form action="signup" method="POST">
-						Email: <input type="text" name="email"><br>
-						Password: <input type="password" name="pwd"><br>
-						Re-type Password: <input type="password" name="pwd"><br>
-						<input type="submit" value="Register">
-					</form>
-				</div>
-				<div class="text-center right text-small hpadding-large hmargin-large">
-					<h3> Login </h3>
-					<form action="login" method="POST">
-						Username: <input type="text" name="username"><br>
-						Password: <input type="password" name="pwd"><br>
-						<input type="submit" value="Login">
-					</form>
-				</div>
 					
+					<div class="left text-small hpadding-large hmargin-large">
+					<h3> Sign Up </h3>
+					<form action="signup" method="POST" class="credentials-box text-darker-grey">
+						<input type="text" name="email" placeholder="Email" class="field"><br>
+						<input type="password" name="pwd" placeholder="Password" class="field"><br>
+						<input type="password" name="pwd" placeholder="Re-type Password" class="field"><br>
+						<input class="bg-orange button text-white center" type="submit" value="Register">
+					</form>
 				</div>
+				<div class="right text-small hpadding-large hmargin-large">
+					<h3> Login </h3>
+					<form action="login" method="POST" class='credentials-box text-darker-grey'>
+						<input type="text" name="username" class="field" placeholder="Username"><br>
+						<input type="password" name="pwd" class="field" placeholder="Password"><br>
+						<input class='bg-orange button text-white center' type="submit" value="Login">
+					</form>
+				</div>
+					</div>
+				
 			</div>
 
 			<footer class="bottom frame vpadding-small" style="left: 0;">

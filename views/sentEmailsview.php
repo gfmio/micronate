@@ -5,14 +5,11 @@ require 'vendor/autoload.php';
 use EDAM\NoteStore\NoteFilter;
 use EDAM\NoteStore\NotesMetadataResultSpec;
 
-class GetSentEmailsView extends SimpleView {
+class SentEmailsView extends SimpleView {
 	function _render() { ?>
 
 <?php
 //require_once 'Evernote/Client.php';
-
-echo "die: begin";
-die();
 
 mb_internal_encoding("UTF-8");
 
@@ -66,7 +63,6 @@ $secondPos = strPos($noteContent, $secondSelector);
 $startpos = $firstPos + 5;
 $getSentEmails = subStr($noteContent, $startpos, $secondPos-$startpos);
 
-echo $getSentEmails;
 (float) $getSentEmails = trim($getSentEmails);
 
 $email = "muriel.binder@gmail.com";
@@ -74,49 +70,46 @@ $pw = "micronate";
 
 (float)$donateAmount = 0.1;
 
-echo "spende: ".$donateAmount*$getSentEmails;
-
  $headerView = new HeaderView(); echo $headerView->render(); ?>
 
-<div class="">
+<div class="frame full-width full-height bg-darker-grey parallax hpadding-small">
+<div class="vcenter">
+	<div class="center text-white" id="title-content">
+		<h1 class="text-center text-xxhuge container center vmargin-medium">
+			<span class="text-orange">m</span><span class="text-turquois">N</span>
+		</h1>
+	
 
-	<form action='javascript:savePersonaData()'>
-		<label><h1>Personal information</h1></label><br>
-		<table width="60%">
-			<tr>
-				<td><label>name</label></td>
-				<td><input type='text' value='Muriel Binder' width="100%"></td>
-			</tr> 
-			<tr>
-				<td><label>email</label></td>
-				<td><input type='text' value='muriel.binder@gmail.com' width="100%"></td>
-			</tr>
-			<tr>
-				<td><label>password</label></td>
-				<td><input type='password' value='micronate' width="100%"></td>
-			</tr>
-			<tr>
-				<td><label>paying plan</label></td>
-				<td> 
-					<select>
+<div class="frame text-center full-width text-small hpadding-large hmargin-large">
+	<div class="credentials-box text-darker-grey left">
+	<form action='javascript:savePersonaData()' >
+		<p class="text-large text-white">Personal information</p>
+			<input type='text' name="name" value='Muriel Binder' placeholder="Name" class="field">
+			<input type='text' name="email" value='muriel.binder@gmail.com' placeholder="Email" class="field">
+			<input type='password' name="pwd" value='micronate' placeholder="Password" class="field">
+					<select name="pymentplan">
 					  <option value="gmail">sent Emails</option>
 					  <option value="evernoate">created notes on evernote</option>
 					  <option value="twitter">number of tweets</option>
 					</select> 
-				</td>
-			</tr>
-			<tr>
-				<td><label>paymant information:</label></td>
-				<td><label>We do know them but not want tho share with hackzurich</label>&nbsp; &nbsp; &nbsp; &nbsp; <button>change</button></td>
-			</tr>
-		</table>
+			<input type="text" name="paymentInfo" value="Erfasst"> &nbsp; &nbsp; <button class="button bg-orange text-white">change</button>
 	</form>
+</div>
+	<div class="credentials-box text-large right">
+		Sent Email Statistic:<br>
+		You've sent <?php echo $getSentEmails; ?> Emails in the Month September!
 
-	<hr width="80%">
+	</div>
+</div>
+<div class="frame text-center text-large hpadding-large hmargin-large">
+	<hr class="text-grey" width="60%">
 
-	<h1>you will spend CHF <?php echo $donateAmount*$getSentEmails; ?> this month to the Project of your choosing </h1>
-
-	<button>Jetzt Spenden!</button>
+	<p>you will spend CHF <?php echo $donateAmount*$getSentEmails; ?> this month to the Project of your choosing</p>
+	
+	<button class="button text-large bg-orange">Jetzt Spenden!</button>
+</div>
+</div>
+</div>
 </div>
 
 <?php

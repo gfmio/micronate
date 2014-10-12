@@ -10,6 +10,7 @@ require_once 'views/editcampaignview.php';
 require_once 'views/profileview.php';
 require_once 'views/editprofileview.php';
 require_once 'views/usertransactionview.php';
+require_once 'views/sentEmailsview.php';
 
 require_once 'views/headerview.php';
 require_once 'views/error404view.php';
@@ -142,5 +143,13 @@ $app->get('/profile/:id/edit', function($id) use ($app) {
 $app->get('/profile/transactions', function($id) use ($app) {
 	$app->render("UserTransactionView", array(
 		"title" => "Micronate - User transactions"
+	));
+});
+
+//Counted EMails
+
+$app->get('/usecase',function() use($app) {
+    $app->render("sentEmailsview", array(
+		"title" => "Micronate - UseCase"
 	));
 });

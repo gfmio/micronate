@@ -118,6 +118,32 @@ body {
     float: left;
 }
 
+//button
+.button{
+	text-decoration: none;
+	border: none;
+	margin-top: 0.618rem;
+	margin-bottom: 0.618rem;
+}
+
+//Credential-box
+.credentials-box{	
+	min-width: 20vw;
+	min-height: 20vh;
+	max-width: 20vw;
+	max-height: 20vh;
+	float: left;
+}
+
+
+
+
+.field{
+	width: 100%;
+	margin-top: 0.618rem;
+	margin-bottom: 0.618rem;
+}
+
 // Scrolling-Enabler (for fixed and absolute blocks)
 
 .y-scroll {
@@ -230,6 +256,8 @@ body {
 .text-black {
 	color: $black !important;
 }
+
+
 
 // Fonts and Font sizes
 
