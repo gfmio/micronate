@@ -24,7 +24,7 @@ class GetStartedView extends SimpleView {
 					</div>
 
 					<div style="display: inline-block; width: 480px; max-width: 50%;" class="right hpadding-large">
-						<h3 class="text-white"> Sign in </h3>
+						<h3 class="text-white"> Sign In </h3>
 						<form action="login" method="POST" class='text-darker-grey'>
 							<input required type="email" name="email" class="field hpadding-small vpadding-small" placeholder="E-mail" style="margin: 0; border: 0; border-bottom: #DDDDDD solid 1px;"><br>
 							<input required type="password" name="password" class="field hpadding-small vpadding-small" placeholder="Password" style="margin: 0; border: 0; border-bottom: #DDDDDD solid 1px;"><br>
