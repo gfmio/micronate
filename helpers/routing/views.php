@@ -302,7 +302,7 @@ $app->get('/usecase',function() use($app) {
 $app->post('/signup', function() use($app){
    $params = $app->request->post();
 
-   $newUID = User::createNew($params['email'], $params['username'],
+   $newUID = User::create($params['email'], $params['username'],
                              $params['pwd'], $params['firstname'],
                              $params['lastname'], "");
 
