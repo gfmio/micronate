@@ -68,11 +68,11 @@ class Donation {
   }
 
   public function getAmountGiven() {
-    return $amount;
+    return $this->amount;
   }
 
   public function getDateTime() {
-    return $dateTime;
+    return $this->dateTime;
   }
 
 }

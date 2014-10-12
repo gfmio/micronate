@@ -39,7 +39,7 @@ function refactorDonation($donationObj) {
   $donation = new StdClass();
   $donation->id = $donationObj->getId();
   $donation->datetime = $donationObj->getDateTime();
-  $donation->amount = $donationObj->getAmount();
+  $donation->amount = $donationObj->getAmountGiven();
   $donation->donor_id = $donationObj->getUser()->getId();
   $donation->donor_name = $donationObj->getUser()->getFullName();
   $donation->donor_image = $donationObj->getUser()->getGravatarUrl();
