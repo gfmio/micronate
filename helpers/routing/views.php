@@ -344,7 +344,7 @@ $app->post('/campaigns/create', function() use(app){
 });
 
 
-$app->post('/campaigns/:id/addmessage', function($id) use(app){
+$app->post('/campaigns/:id/addmessage', function($id) use($app){
 
   if (!isset($_SESSION['userId']))
     $app->redirect('/get-started');
@@ -357,4 +357,7 @@ $app->post('/campaigns/:id/addmessage', function($id) use(app){
   $app->redirect("/campaigns/:id");
 });
 
+$app->post('/campaigns/:id/donate', function($id) use($app){
+  
+});
 ?>
