@@ -22,9 +22,38 @@
 }
 
 .container {
-	max-width: 33em;
+	max-width: 40em;
 	width: 100%;
 	@extend .hmargin-medium;
 	padding-top: inherit;
 	padding-bottom: inherit;
+}
+
+.discover-container {
+	max-width: 50em;
+	width: 100%;
+	@extend .hmargin-medium;
+	padding-top: inherit;
+	padding-bottom: inherit;
+}
+
+.discover-container ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.discover-container ul li {
+	padding: 0;
+	margin: 0;
+	border-bottom: 0.125em solid $light-grey;
+	display: block;
+}
+
+.discover-container ul li:last-child {
+	border-bottom: none;
+}
+
+.discover-container ul li:hover {
+	background: $lighter-grey;
 }

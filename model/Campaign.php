@@ -75,6 +75,14 @@ class Campaign {
     return $this->location;
   }
 
+  public function getLatitude() {
+    return '-0.04';
+  }
+
+  public function getLongitude() {
+    return '48.0';
+  }
+
   public function getGoal() {
     return $this->goal;
   }
@@ -105,14 +113,43 @@ class Campaign {
     DB::init();
     $q = DB::$pdo->prepare("SELECT * FROM donation WHERE campaign_id = :campaign_id");
     $q->execute(array(
-      'campaign_id' => $this->id
+      ':campaign_id' => $this->id,
     ));
 
     $donations = array();
-    $res = $q->fetch(PDO::FETCH_ASSOC);
-    foreach($donation as $q) {
+    $res = $q->fetchAll(PDO::FETCH_ASSOC);
+    foreach($res as $donation) {
       $donations[] = new Donation($donation['id']);
     }
+    return $donations;
+  }
+
+  public function getMessages() {
+    DB::init();
+    $q = DB::$pdo->prepare("SELECT * FROM message WHERE campaign_id = :campaign_id ORDER BY date_time DESC");
+    $q->execute(array(
+      ':campaign_id' => $this->id,
+    ));
+
+    $messages = array();
+    $res = $q->fetchAll(PDO::FETCH_ASSOC);
+    foreach($res as $message) {
+      $messages[] = new Donation($message['id']);
+    }
+    return $messages;
+  }
+
+  public static function getAll() {
+    DB::init();
+    $q = DB::$pdo->prepare("SELECT * FROM campaign ORDER BY start_datetime DESC");
+    $q->execute();
+    $res = $q->fetchAll(PDO::FETCH_ASSOC);
+    $arr = array();
+    foreach($res as $r) {
+      $arr[] = new Campaign($r['id']);
+    }
+    return $arr;
+
   }
 }
 
