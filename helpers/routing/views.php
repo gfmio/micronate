@@ -205,9 +205,9 @@ $app->get('/campaigns/:id', function($id) use ($app) {
 
   $campaign = refactorCampaign($campaignObj);
 
-  if ($campaign->getId() !== NULL) {
+  if ($campaignObj->getId() !== NULL) {
     $app->render("CampaignView", array(
-      "title" => "Micronate - ".$campaign->getTitle(),
+      "title" => "Micronate - ".$campaignObj->getTitle(),
       "user_full_name" => $user->getFullName(),
       "user_image_url" => $user->getGravatarUrl(),
       "campaign" => $campaign,
