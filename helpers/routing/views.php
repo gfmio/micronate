@@ -104,14 +104,14 @@ function refactorTransactions($transactionsList) {
 
 }
 
-$app->get('/',function() use($app) {
-    $app->render("LandingView", array(
-    "header_title" => "Micronate - Home"
-  ));
-});
+// $app->get('/',function() use($app) {
+//     $app->render("LandingView", array(
+//     "header_title" => "Micronate - Home"
+//   ));
+// });
 
 // GET / : Homepage
-$app->get('/site',function() use ($app) {
+$app->get('/',function() use ($app) {
   $app->render("HomeView", array(
     "header_title" => "Micronate - Home"
   ));
