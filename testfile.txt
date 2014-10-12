@@ -1,1 +1,98 @@
-Jane Doe
+$users = array();
+	$users[] = new StdClass();
+	$users[0]->id = 1;
+	$users[0]->username = "muriel";
+	$users[0]->name = "Muriel";
+	$users[0]->surname = "Bider";
+	$users[0]->email = "muriel@gmail.com";
+	$users[0]->balance = 0;
+	$users[0]->location = "Basel";
+
+	$users[] = new StdClass();
+	$users[1]->id = 2;
+	$users[1]->username = "marsty5";
+	$users[1]->name = "Maria";
+	$users[1]->surname = "Stylianou";
+	$users[1]->email = "maria@gmail.com";
+	$users[1]->balance = 0;
+	$users[1]->location = "Nicosia";
+
+	$users[] = new StdClass();
+	$users[2]->id = 3;
+	$users[2]->username = "anna";
+	$users[2]->name = "Anna";
+	$users[2]->surname = "Miller";
+	$users[2]->email = "anna@gmail.com";
+	$users[2]->balance = 0;
+	$users[2]->location = "Basel";
+
+	$users[] = new StdClass();
+	$users[3]->id = 4;
+	$users[3]->username = "peter";
+	$users[3]->name = "Peter";
+	$users[3]->surname = "Hajek";
+	$users[3]->email = "peter@gmail.com";
+	$users[3]->balance = 0;
+	$users[3]->location = "Zurich";
+
+	$users[] = new StdClass();
+	$users[4]->id = 5;
+	$users[4]->username = "George";
+	$users[4]->name = "George";
+	$users[4]->surname = "Andreu";
+	$users[4]->email = "george@gmail.com";
+	$users[4]->balance = 0;
+	$users[4]->location = "Nicosia";
+
+
+
+
+	$campaigns = array();
+	$campaigns[] = new StdClass();
+	$campaigns[0]->id = 1;
+	$campaigns[0]->title = "10 educational books for 10 children";
+	$campaigns[0]->description = "At Pro Juventute, we run Language and Logic Skills lessons for foreign-speaking children aged 4-8 years. These lessons aim to help them in a later stage at their adulthood, to have the same opportunities as their peers.  This year we have a class of 10 children and the book Schau genau – schau, wie schlau! costs 15 dollars. The children and their parents are notified for this campaign and are looking forward to seeing your  generous contributions!";
+	$campaigns[0]->location = new StdClass();
+	$campaigns[0]->location->longitude = -0.04;
+	$campaigns[0]->location->latitude = 48.0;
+	$campaigns[0]->goal = 15000; // $150.00
+	$campaigns[0]->startDateTime = new DateTime();
+	$campaigns[0]->startDateTime->setDate(2014, 9, 1);
+	$campaigns[0]->startDateTime->setTime(12, 0, 0);
+	$campaigns[0]->endDateTime = new DateTime();
+	$campaigns[0]->endDateTime->setDate(2014, 10, 20);
+	$campaigns[0]->endDateTime->setTime(12, 0, 0);
+	$campaigns[0]->creator_id = 3;
+
+	$campaigns[] = new StdClass();
+	$campaigns[1]->id = 2;
+	$campaigns[1]->title = "Support for Alicia";
+	$campaigns[1]->description = "Alicia lost both her parents after a car accident last month. Her aunt took full responsibility but asks for financial support for Helen's visits at the psychologist twice a week. One-hour visit costs 50 dollars which raises to 400dollars per month. This campaign is recurring for 6 months.";
+	$campaigns[1]->location = new StdClass();
+	$campaigns[1]->location->longitude = -0.04;
+	$campaigns[1]->location->latitude = -48.0;
+	$campaigns[1]->goal = 40000; // $400.00
+	$campaigns[1]->startDateTime = new DateTime();
+	$campaigns[1]->startDateTime->setDate(2014, 10, 1);
+	$campaigns[1]->startDateTime->setTime(12, 0, 0);
+	$campaigns[1]->endDateTime = new DateTime();
+	$campaigns[1]->endDateTime->setDate(2014, 11, 1);
+	$campaigns[1]->endDateTime->setTime(18, 0, 0);
+	$campaigns[1]->creator_id = 4;
+
+	$campaigns[] = new StdClass();
+	$campaigns[1]->id = 2;
+	$campaigns[1]->title = "Family asks for shopping vouchers";
+	$campaigns[1]->description = "A 5-member family is under financial pressure after the husband lost his job and the wife's salary reduced by 30% due to the financial crisis in Cyprus. They are asking for financial support to feed their 3 children. They need approximately 50 dollars per week for buying the basic food, which corresponds to 200 dollars per month. This campaign is recurring for the next 2 months.";
+	$campaigns[1]->location = new StdClass();
+	$campaigns[1]->location->longitude = 33.3667;
+	$campaigns[1]->location->latitude = 35.1667;
+	$campaigns[1]->goal = 20000; // $200.00
+	$campaigns[1]->startDateTime = new DateTime();
+	$campaigns[1]->startDateTime->setDate(2014, 10, 10);
+	$campaigns[1]->startDateTime->setTime(12, 0, 0);
+	$campaigns[1]->endDateTime = new DateTime();
+	$campaigns[1]->endDateTime->setDate(2014, 11, 10);
+	$campaigns[1]->endDateTime->setTime(18, 0, 0);
+	$campaigns[1]->creator_id = 2;
+
