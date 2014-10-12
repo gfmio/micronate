@@ -14,9 +14,9 @@ class CampaignView extends SimpleView {
 	<?php else: ?>
 	    <canvas id="doughNutChartLoc" width="400" height="400"></canvas>
 	    <script>
-	    <?php var $colors = array("lightblue", "lightgreen", "lightgrey"); ?>
+	    <?php $colors = array("lightblue", "lightgreen", "lightgrey"); ?>
 	    var pieChartData = [
-	        <?php var $i = 0; ?>
+	        <?php $i = 0; ?>
 	        <?php foreach ($this->data["donations"] as $c): ?>
 	        {
 	        	value: <?php echo $c["value"]; ?>,
