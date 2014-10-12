@@ -175,6 +175,14 @@ class User {
 
     }
 
+    public function getFullName() {
+      return $this->getFirstName() . ' ' .  $this->getLastName();
+    }
+
+    public function getGravatarUrl() {
+      return md5( strtolower( trim( $this->getEmail() ) ) );
+    }
+
     public function getAppsDeveloped() {
         // retrieve apps that the user is developer of
     }

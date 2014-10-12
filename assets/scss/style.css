@@ -605,7 +605,7 @@ body {
   margin-left: 0.809rem;
   margin-right: 0.809rem; }
 
-.hmargin-medium, .container {
+.hmargin-medium, .container, .discover-container {
   margin-left: 1.618rem;
   margin-right: 1.618rem; }
 
@@ -2013,7 +2013,30 @@ img {
   #title-content {
     margin-top: -8.09em; } }
 .container {
-  max-width: 33em;
+  max-width: 40em;
   width: 100%;
   padding-top: inherit;
   padding-bottom: inherit; }
+
+.discover-container {
+  max-width: 50em;
+  width: 100%;
+  padding-top: inherit;
+  padding-bottom: inherit; }
+
+.discover-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+.discover-container ul li {
+  padding: 0;
+  margin: 0;
+  border-bottom: 0.125em solid #ccc3c2;
+  display: block; }
+
+.discover-container ul li:last-child {
+  border-bottom: none; }
+
+.discover-container ul li:hover {
+  background: #f2e8e6; }

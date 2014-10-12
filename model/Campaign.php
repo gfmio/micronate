@@ -75,6 +75,14 @@ class Campaign {
     return $this->location;
   }
 
+  public function getLatitude() {
+    return '-0.04';
+  }
+
+  public function getLongitude() {
+    return '48.0';
+  }
+
   public function getGoal() {
     return $this->goal;
   }
@@ -113,6 +121,19 @@ class Campaign {
     foreach($donation as $q) {
       $donations[] = new Donation($donation['id']);
     }
+  }
+
+  public static function getAll() {
+    DB::init();
+    $q = DB::$pdo->prepare("SELECT * FROM campaign ORDER BY start_datetime DESC");
+    $q->execute();
+    $res = $q->fetch(PDO::FETCH_ALL);
+    $arr = array();
+    foreach($res as $r) {
+      $arr[] = new Campaign($r['id']);
+    }
+    return $arr;
+
   }
 }
 
