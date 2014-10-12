@@ -291,7 +291,6 @@ $app->get('/profile/transactions', function($id) use ($app) {
   ));
 });
 
-<<<<<<< HEAD
 //Counted EMails
 
 $app->get('/usecase',function() use($app) {
@@ -299,7 +298,7 @@ $app->get('/usecase',function() use($app) {
 		"title" => "Micronate - UseCase"
 	));
 });
-=======
+
 $app->post('/signup', function() use($app){
    $params = $app->request->post();
 
@@ -344,4 +343,3 @@ $app->post('/campaigns/create', function() use(app){
   $app->redirect("/campaigns/{$newUID}");
 });
 ?>
->>>>>>> bba48d1d03149c64d9351886f011af009e3d8d55
