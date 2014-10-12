@@ -39,9 +39,7 @@ $app->get('/discover', function() use ($app) {
 	$campaigns[0]->id = 1;
 	$campaigns[0]->title = "Example Title 1";
 	$campaigns[0]->description = "Lorem ipsum dolor sit amet. And some more...";
-	$campaigns[0]->location = new StdClass();
-	$campaigns[0]->location->longitude = -0.04;
-	$campaigns[0]->location->latitude = 48.0;
+	$campaigns[0]->location = "Berlin, Germany";
 	$campaigns[0]->goal = 20000; // $200.00
 	$campaigns[0]->startDateTime = new DateTime();
 	$campaigns[0]->startDateTime->setDate(2014, 9, 1);
@@ -49,15 +47,16 @@ $app->get('/discover', function() use ($app) {
 	$campaigns[0]->endDateTime = new DateTime();
 	$campaigns[0]->endDateTime->setDate(2014, 12, 1);
 	$campaigns[0]->endDateTime->setTime(12, 0, 0);
-	$campaigns[0]->creator_id = 3;
-	
+	$campaigns[0]->creatorId = 3;
+	$campaigns[0]->creator = new User($campaigns[0]->creatorId);
+	// $campagins[0]->creator->firstName = $campaigns[0]->creator->getFirstName();
+	// $campagins[0]->creator->lastName = $campaigns[0]->creator->getLastName();
+
 	$campaigns[] = new StdClass();
 	$campaigns[1]->id = 2;
 	$campaigns[1]->title = "Example Title 2";
 	$campaigns[1]->description = "Lorem ipsum dolor sit amet. And some more... And even more.";
-	$campaigns[1]->location = new StdClass();
-	$campaigns[1]->location->longitude = -0.04;
-	$campaigns[1]->location->latitude = -48.0;
+	$campaigns[1]->location = "London, United Kingdom";
 	$campaigns[1]->goal = 30000; // $300.00
 	$campaigns[1]->startDateTime = new DateTime();
 	$campaigns[1]->startDateTime->setDate(2014, 8, 15);
@@ -65,8 +64,11 @@ $app->get('/discover', function() use ($app) {
 	$campaigns[1]->endDateTime = new DateTime();
 	$campaigns[1]->endDateTime->setDate(2014, 11, 1);
 	$campaigns[1]->endDateTime->setTime(18, 0, 0);
-	$campaigns[1]->creator_id = 4;
-	
+	$campaigns[1]->creatorId = 4;
+	$campaigns[1]->creator = new User($campaigns[1]->creatorId);
+	// $campagins[0]->creator->firstName = $campaigns[0]->creator->getFirstName();
+	// $campagins[0]->creator->lastName = $campaigns[0]->creator->getLastName();
+
 	$app->render("DiscoverView", array(
 		"title" => "Micronate - Discover",
 		"campaigns" => $campaigns
