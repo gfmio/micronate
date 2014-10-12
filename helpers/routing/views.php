@@ -64,9 +64,8 @@ function refactorCampaign($campaignObj) {
   $campaign->location->latitude = $campaignObj->getLatitude();
   $campaign->goal = $campaignObj->getGoal();
   $campaign->total_reached = $campaignObj->getTotalDonations();
-  $campaign->startDateTime = $campaignObj->getId();
-  $campaign->endDateTime = $campaignObj->getId();
-
+  $campaign->startDateTime = DateTime::createFromFormat('Y-m-d H:i:s', $campaignObj->getStartDatetime());
+  $campaign->endDateTime = DateTime::createFromFormat('Y-m-d H:i:s', $campaignObj->getEndDatetime());
   $creator = $campaignObj->getCreator();
   $campaign->creator_id = $creator->getId();
   $campaign->creator_name = $creator->getFullName();
