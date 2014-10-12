@@ -183,6 +183,8 @@ $app->get('/profile/:id', function($id) use ($app) {
     $userObj = new StdClass();
     $userObj->firstName = $user->getFirstName();
     $userObj->surname = $user->getLastName();
+    $userObj->email = $user->getEmail();
+    $userObj->username = $user->getUsername();
     $userObj->location = $user->getLocation();
     $userObj->campaigns = refactorCampaigns($user->getCampaigns());
 
