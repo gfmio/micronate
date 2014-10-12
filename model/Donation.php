@@ -11,6 +11,9 @@ class Donation {
   public static function process($user, $campaign, $amount) {
     // save transaction in db and retrieve new id
 
+    if ($user->getBalance() < $amount)
+      return 0;
+
     DB::init();
     $q = DB::$pdo->prepare("INSERT INTO donation (user_id, campaign_id, amount)
                             VALUES (:user_id, :campaign_id, :amount)");
@@ -24,7 +27,15 @@ class Donation {
     if ($rowsAffected == 0)
       return 0;
 
-    return DB::$pdo->lastInsertId();
+    $lastid =  DB::$pdo->lastInsertId();
+
+    $q2 = DB::$pdo->prepare("UPDATE user SET balance = balance - :amount");
+
+    $q2->execute(array(
+      'amount' => $amount,
+    ));
+
+    return $lastid;
   }
 
   public function __construct($id) {

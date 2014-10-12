@@ -358,6 +358,22 @@ $app->post('/campaigns/:id/addmessage', function($id) use($app){
 });
 
 $app->post('/campaigns/:id/donate', function($id) use($app){
-  
+  if (!isset($_SESSION['userId']))
+    $app->redirect('/get-started');
+  $user = new User($_SESSION['userId']);
+
+  $params = $app->request->post();
+
+  $id = Donation::process($user, new Campaign($id), $params['amount']);
+  if ($id == 0) {
+    $app->render(200, array(
+        'msg' => 'insufficent balance',
+    ));
+  }
+
+  $app->render(200, array(
+      'msg' => 'Thank you!',
+   ));
+
 });
 ?>
