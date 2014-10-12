@@ -10,7 +10,7 @@ class CampaignView extends SimpleView {
 				<?php echo $this->data["campaign"]->title; ?>
 			</h1>
 			<div class="text-center text-large container center vmargin-medium">
-				<form action="donate" type="POST">
+				<form action="donate" method="POST">
 					<input type="text" placeholder="Amount in USD" name="amount">
 					<input type="submit" value="Donate">
 				</form>
