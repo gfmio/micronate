@@ -316,7 +316,7 @@ $app->post('/login', function() use($app){
    $userId = User::verifyCredentials($params['email'], $params['password']);
 
   session_start();
-  $_SESSION['userId'] = $newUID;
+  $_SESSION['userId'] = $userId;
 
 });
 
