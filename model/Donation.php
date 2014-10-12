@@ -55,6 +55,10 @@ class Donation {
     $this->dateTime = $res['date_time'];
   }
 
+  public function getId() {
+    return $this->id;
+  }
+
   public function getUser() {
     return new User($this->user_id);
   }
