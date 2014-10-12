@@ -332,7 +332,7 @@ $app->get('/logout', function() use($app) {
 $app->post('/campaigns/create', function() use($app){
 
   if (!isset($_SESSION['userId']))
-    $app->redirect('./get-started');
+    $app->redirect('../get-started');
   $user = new User($_SESSION['userId']);
 
   $params = $app->request->post();
@@ -351,19 +351,19 @@ $app->post('/campaigns/create', function() use($app){
 $app->post('/campaigns/:id/addmessage', function($id) use($app){
 
   if (!isset($_SESSION['userId']))
-    $app->redirect('./get-started');
+    $app->redirect('../get-started');
   $user = new User($_SESSION['userId']);
 
   $params = $app->request->post();
 
   $newUID = Campaign::createNew( $params['content'], $user, new Campaign($id));
 
-  $app->redirect("./campaigns/:id");
+  $app->redirect("../campaigns/:id");
 });
 
 $app->post('/campaigns/:id/donate', function($id) use($app){
   if (!isset($_SESSION['userId']))
-    $app->redirect('./get-started');
+    $app->redirect('../get-started');
   $user = new User($_SESSION['userId']);
 
   $params = $app->request->post();
