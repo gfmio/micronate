@@ -29,7 +29,8 @@ class User {
         $rowsAffected = $q->execute(array(
             ':email' => $email,
             ':username' => $username,
-            ':password' => sha1($password . self::SALT()),
+            //':password' => sha1($password . self::SALT()),
+            ':password' => $password,
             ':first_name' => $first_name,
             ':last_name' => $last_name,
             ':location' => $location,
@@ -54,8 +55,9 @@ class User {
         $q = DB::$pdo->prepare("SELECT id FROM user WHERE email = :email AND password = :password LIMIT 1");
         $q->execute(array(
             ':email' => $email,
-            ':password' => sha1($password . self::SALT()),
-        ));
+            //':password' => sha1($password . self::SALT()),
+            ':password' => $password,
+         ));
 
         $res = $q->fetch(PDO::FETCH_ASSOC);
 
