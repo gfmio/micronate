@@ -304,7 +304,7 @@ $app->post('/signup', function() use($app){
 
    $newUID = User::createNew($params['email'], $params['username'],
                              $params['pwd'], $params['firstname'],
-                             $params['lastname'], $params['location']);
+                             $params['lastname'], "");
 
   session_start();
   $_SESSION['userId'] = $newUID;
