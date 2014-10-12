@@ -310,6 +310,7 @@ $app->post('/signup', function() use($app){
   session_start();
   $_SESSION['userId'] = $newUID;
 
+  $app->redirect('/discover');
 });
 
 $app->post('/login', function() use($app){
@@ -318,6 +319,8 @@ $app->post('/login', function() use($app){
 
   session_start();
   $_SESSION['userId'] = $userId;
+
+  $app->redirect('/discover');
 
 });
 
