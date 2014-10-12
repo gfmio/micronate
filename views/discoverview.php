@@ -15,7 +15,7 @@ class DiscoverView extends SimpleView {
 		<p class="text-center">There are no campaigns registered with us. :(</p>
 		<?php else: ?>
 		<ul>
-			<?php foreach ($this->data["campaigns"] as $c): print_r($c);?>
+			<?php foreach ($this->data["campaigns"] as $c): ?>
 
 			<li class="clear">
 				<div class="left">
@@ -27,8 +27,8 @@ class DiscoverView extends SimpleView {
 				</div>
 				<p class="left">
 					<strong class="left"><a href="./campaigns/<?php echo $c->id;?>" class="text-black"><?php echo $c->title; ?></a></strong>&nbsp;<em>by <a href="./profile/<?php echo $c->creator_id; ?>"><?php echo $c->creator_name; ?></a></em><br/>
-					<?php echo $c->description; ?><br/>
-					<em><?php echo $c->startDateTime->format('d M Y H:i'); ?> - <?php echo $c->endDateTime->format('d M Y H:i'); ?></em> <?php echo $c->location; ?>
+					<?php echo (strlen($c->description) > 80 ? substr($c->description, 0 , 80-3)."..." : $c->description); ?><br/>
+					<em><?php echo $c->startDateTime->format('d M Y H:i'); ?> - <?php echo $c->endDateTime->format('d M Y H:i'); ?></em>
 				</p>
 			</li>
 			<?php endforeach; ?>
