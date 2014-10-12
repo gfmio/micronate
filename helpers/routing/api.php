@@ -10,7 +10,7 @@ $app->group('/api', 'APIrequest', function () use ($app) {
 	});
 
 	$app->post('/user',function() use ($app) {
-		
+
 
 		$app->render(200,array(
 			'msg' => 'welcome to my API!',
@@ -206,4 +206,12 @@ $app->post('/api/make_micro', function() use($app){
 	}
 
 
+});
+
+$app->post('/api/microdonate', function() use($app) {
+	$params = $app->request->post();
+	$user_id = User::verifyCredentials($params['email'], $params['password']);
+	$user = new User($user_id);
+	$application = new Application(1);
+	$user->initiateMicro($application, $params['amount']);
 });

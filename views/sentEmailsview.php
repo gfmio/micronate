@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__.'/../vendor/autoload.php';
+require 'vendor/autoload.php';
 
 use EDAM\NoteStore\NoteFilter;
 use EDAM\NoteStore\NotesMetadataResultSpec;
@@ -104,9 +104,9 @@ $pw = "micronate";
 <div class="frame text-center text-large hpadding-large hmargin-large">
 	<hr class="text-grey" width="60%">
 
-	<p>you will spend CHF <?php echo $donateAmount*$getSentEmails; ?> this month to the Project of your choosing</p>
+	<p>you will spend CHF <span id="amountToDonate"><?php echo $donateAmount*$getSentEmails; ?></span> this month to the Project of your choosing</p>
 
-	<button class="button text-large bg-orange">Jetzt Spenden!</button>
+	<button class="button text-large bg-orange" id="donateButton">Jetzt Spenden!</button>
 </div>
 </div>
 </div>
