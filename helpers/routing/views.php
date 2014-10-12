@@ -147,7 +147,7 @@ $app->get('/campaigns/:id', function($id) use ($app) {
       "title" => "Micronate - ".$campaign->getTitle(),
       "user_full_name" => $user->getFullName(),
       "user_image_url" => $user->getGravatarUrl(),
-      "campaign" => $campaign;
+      "campaign" => $campaign,
     ));
   } else {
     $app->render("Error404View", array(
@@ -249,9 +249,9 @@ $app->post('/login', function() use($app){
 
 });
 
-$app->get('/logout', function() use($app)) {
+$app->get('/logout', function() use($app) {
   unset($_SESSION['userId']);
   $app->redirect('/get-started');
-}
+});
 
 ?>
