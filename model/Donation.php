@@ -53,7 +53,6 @@ class Donation {
     $this->campaign_id = $res['campaign_id'];
     $this->amount = $res['amount'];
     $this->dateTime = $res['date_time'];
-    $this->stripeCharge = $res['stripe_charge_token'];
   }
 
   public function getUser() {
