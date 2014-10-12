@@ -166,13 +166,13 @@ class User {
           ':user_id', $user->getId(),
       ));
 
-      $res = $q->fetch(PDO::FETCH_ASSOC);
+      $res = $q->fetchAll(PDO::FETCH_ASSOC);
 
       $transactions = array();
       foreach ($res as $transaction) {
         $transaction[] = new MicroTransaction($transaction['id']);
       }
-
+      return $transactions;
     }
 
     public function getFullName() {

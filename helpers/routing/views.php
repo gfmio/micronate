@@ -15,6 +15,44 @@ require_once 'views/headerview.php';
 require_once 'views/error404view.php';
 require_once 'views/error500view.php';
 
+function refactorMessage($messageObj) {
+  $message = new StdClass();
+  $message->id = $messageObj->getId();
+  $message->content = $messageObj->getContent();
+  $message->datetime = $messageObj->getDateTime();
+  $message->author_id = $messageObj->getAuthor()->getId();
+  $message->author_name = $messageObj->getAuthor()->getName();
+  $message->author_image = $messageObj->getAuthor()->getGravatarUrl();
+  return $message;
+}
+
+function refactorMessages($messageList) {
+  $donations = array();
+  foreach ($donatonsList as $donationObj) {
+    $donations[$i] = refactorCampaign($donationObj);
+  }
+  return $messages;
+}
+
+function refactorDonation($donationObj) {
+  $donation = new StdClass();
+  $donation->id = $donationObj->getId();
+  $donation->datetime = $donationObj->getDateTime();
+  $donation->amount = $donationObj->getAmount();
+  $donation->donor_id = $donationObj->getUser()->getId();
+  $donation->donor_name = $donationObj->getUser()->getFullName();
+  $donation->donor_image = $donationObj->getUser()->getGravatarUrl();
+  return $donation;
+}
+
+function refactorDonations($donationsList) {
+  $donations = array();
+  foreach ($donatonsList as $donationObj) {
+    $donations[$i] = refactorCampaign($donationObj);
+  }
+  return $donations;
+}
+
 function refactorCampaign($campaignObj) {
   $campaign = new StdClass();
   $campaign->id = $campaignObj->getId();
@@ -32,6 +70,9 @@ function refactorCampaign($campaignObj) {
   $campaign->creator_name = $creator->getName();
   $campaign->creator_image = $creator->getImage();
 
+  $campaign->donations = refactorDonations($campaignObj->getDonations());
+
+  $campaign->messages = refactorMessages($campaignObj->getMessages());
   return $campaign;
 }
 
@@ -40,8 +81,26 @@ function refactorCampaigns($campaignsList) {
   foreach ($campaignsList as $campaignObj) {
     $campaigns[$i] = refactorCampaign($campaignObj);
   }
+  return $campaigns;
 }
 
+function refactorTransaction($transactionObj) {
+  $transaction = new StdClass();
+  $transaction->id = $transactionObj->getId();
+  $transaction->app_name = $transactionObj->getApplication()->getName();
+  $transaction->amount = $transactionObj->getAmount();
+  $transaction->date_time = $transactionObj->getDateTime();
+  return $transactions;
+}
+
+function refactorTransactions($transactionsList) {
+  $transactions = array();
+  foreach ($transactionsList as $transactionObj) {
+    $transactions[$i] = refactorCampaign($transactionObj);
+  }
+  return $transactions;
+
+}
 
 $app->get('/',function() use($app) {
     $app->render("LandingView", array(
@@ -226,7 +285,7 @@ $app->get('/profile/transactions', function($id) use ($app) {
     "title" => "Micronate - User transactions",
     "user_full_name" => $user->getFullName(),
     "user_image_url" => $user->getGravatarUrl(),
-
+    "transactions" => refactorTransactions($user->getMicroTransactions()),
   ));
 });
 

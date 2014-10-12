@@ -113,14 +113,30 @@ class Campaign {
     DB::init();
     $q = DB::$pdo->prepare("SELECT * FROM donation WHERE campaign_id = :campaign_id");
     $q->execute(array(
-      'campaign_id' => $this->id
+      ':campaign_id' => $this->id,
     ));
 
     $donations = array();
-    $res = $q->fetch(PDO::FETCH_ASSOC);
-    foreach($donation as $q) {
+    $res = $q->fetchAll(PDO::FETCH_ASSOC);
+    foreach($res as $donation) {
       $donations[] = new Donation($donation['id']);
     }
+    return $donations;
+  }
+
+  public function getMessages() {
+    DB::init();
+    $q = DB::$pdo->prepare("SELECT * FROM message WHERE campaign_id = :campaign_id ORDER BY date_time DESC");
+    $q->execute(array(
+      ':campaign_id' => $this->id,
+    ));
+
+    $messages = array();
+    $res = $q->fetchAll(PDO::FETCH_ASSOC);
+    foreach($res as $message) {
+      $messages[] = new Donation($message['id']);
+    }
+    return $messages;
   }
 
   public static function getAll() {
