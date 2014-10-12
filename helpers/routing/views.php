@@ -30,7 +30,7 @@ function refactorMessage($messageObj) {
 function refactorMessages($messageList) {
   $messages = array();
   foreach ($messageList as $messageObj) {
-    $messages[$i] = refactorCampaign($messageObj);
+    $messages[$i] = refactorMessages($messageObj);
   }
   return $messages;
 }
@@ -49,7 +49,7 @@ function refactorDonation($donationObj) {
 function refactorDonations($donationsList) {
   $donations = array();
   foreach ($donationsList as $donationObj) {
-    $donations[$i] = refactorCampaign($donationObj);
+    $donations[$i] = refactorDonation($donationObj);
   }
   return $donations;
 }
@@ -98,7 +98,7 @@ function refactorTransaction($transactionObj) {
 function refactorTransactions($transactionsList) {
   $transactions = array();
   foreach ($transactionsList as $transactionObj) {
-    $transactions[$i] = refactorCampaign($transactionObj);
+    $transactions[$i] = refactorTransaction($transactionObj);
   }
   return $transactions;
 

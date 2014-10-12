@@ -78,7 +78,7 @@ $pw = "micronate";
 		<h1 class="text-center text-xxhuge container center vmargin-medium">
 			<span class="text-orange">m</span><span class="text-turquois">N</span>
 		</h1>
-	
+
 
 <div class="frame text-center full-width text-small hpadding-large hmargin-large">
 	<div class="credentials-box text-darker-grey left">
@@ -91,7 +91,7 @@ $pw = "micronate";
 					  <option value="gmail">sent Emails</option>
 					  <option value="evernoate">created notes on evernote</option>
 					  <option value="twitter">number of tweets</option>
-					</select> 
+					</select>
 			<input type="text" name="paymentInfo" value="Erfasst"> &nbsp; &nbsp; <button class="button bg-orange text-white">change</button>
 	</form>
 </div>
@@ -105,7 +105,7 @@ $pw = "micronate";
 	<hr class="text-grey" width="60%">
 
 	<p>you will spend CHF <?php echo $donateAmount*$getSentEmails; ?> this month to the Project of your choosing</p>
-	
+
 	<button class="button text-large bg-orange">Jetzt Spenden!</button>
 </div>
 </div>
