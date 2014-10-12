@@ -45,84 +45,71 @@ function refactorCampaigns($campaignsList) {
 
 $app->get('/',function() use($app) {
     $app->render("LandingView", array(
-		"title" => "Micronate - Home"
-	));
+    "title" => "Micronate - Home"
+  ));
 });
 
 // GET / : Homepage
 $app->get('/site',function() use ($app) {
-	$app->render("HomeView", array(
-		"title" => "Micronate - Home"
-	));
+  $app->render("HomeView", array(
+    "title" => "Micronate - Home"
+  ));
 });
 
 // GET /discover : Discover page
 $app->get('/discover', function() use ($app) {
-	// Data to be provided
+  // Data to be provided
   $campaignsList = Campaign::getAll();
 
   $campaigns = refactorCampaigns($campaignsList);
 
-	// Test data
+  // Test data
 /*
-	$campaigns = array();
-	$campaigns[] = new StdClass();
-	$campaigns[0]->id = 1;
-	$campaigns[0]->title = "Example Title 1";
-	$campaigns[0]->description = "Lorem ipsum dolor sit amet. And some more...";
-	$campaigns[0]->location = "Berlin, Germany";
-	$campaigns[0]->goal = 20000; // $200.00
-	$campaigns[0]->startDateTime = new DateTime();
-	$campaigns[0]->startDateTime->setDate(2014, 9, 1);
-	$campaigns[0]->startDateTime->setTime(12, 0, 0);
-	$campaigns[0]->endDateTime = new DateTime();
-	$campaigns[0]->endDateTime->setDate(2014, 12, 1);
-	$campaigns[0]->endDateTime->setTime(12, 0, 0);
-<<<<<<< HEAD
-	$campaigns[0]->creatorId = 3;
-	$campaigns[0]->creator = new User($campaigns[0]->creatorId);
-	// $campagins[0]->creator->firstName = $campaigns[0]->creator->getFirstName();
-	// $campagins[0]->creator->lastName = $campaigns[0]->creator->getLastName();
-=======
-	$campaigns[0]->creator_id = 3;
->>>>>>> FETCH_HEAD
+  $campaigns = array();
+  $campaigns[] = new StdClass();
+  $campaigns[0]->id = 1;
+  $campaigns[0]->title = "Example Title 1";
+  $campaigns[0]->description = "Lorem ipsum dolor sit amet. And some more...";
+  $campaigns[0]->location = new StdClass();
+  $campaigns[0]->location->longitude = -0.04;
+  $campaigns[0]->location->latitude = 48.0;
+  $campaigns[0]->goal = 20000; // $200.00
+  $campaigns[0]->startDateTime = new DateTime();
+  $campaigns[0]->startDateTime->setDate(2014, 9, 1);
+  $campaigns[0]->startDateTime->setTime(12, 0, 0);
+  $campaigns[0]->endDateTime = new DateTime();
+  $campaigns[0]->endDateTime->setDate(2014, 12, 1);
+  $campaigns[0]->endDateTime->setTime(12, 0, 0);
+  $campaigns[0]->creator_id = 3;
 
-	$campaigns[] = new StdClass();
-	$campaigns[1]->id = 2;
-	$campaigns[1]->title = "Example Title 2";
-	$campaigns[1]->description = "Lorem ipsum dolor sit amet. And some more... And even more.";
-	$campaigns[1]->location = "London, United Kingdom";
-	$campaigns[1]->goal = 30000; // $300.00
-	$campaigns[1]->startDateTime = new DateTime();
-	$campaigns[1]->startDateTime->setDate(2014, 8, 15);
-	$campaigns[1]->startDateTime->setTime(12, 0, 0);
-	$campaigns[1]->endDateTime = new DateTime();
-	$campaigns[1]->endDateTime->setDate(2014, 11, 1);
-	$campaigns[1]->endDateTime->setTime(18, 0, 0);
-<<<<<<< HEAD
-	$campaigns[1]->creatorId = 4;
-	$campaigns[1]->creator = new User($campaigns[1]->creatorId);
-	// $campagins[0]->creator->firstName = $campaigns[0]->creator->getFirstName();
-	// $campagins[0]->creator->lastName = $campaigns[0]->creator->getLastName();
-=======
-	$campaigns[1]->creator_id = 4;
-<<<<<<< HEAD
+  $campaigns[] = new StdClass();
+  $campaigns[1]->id = 2;
+  $campaigns[1]->title = "Example Title 2";
+  $campaigns[1]->description = "Lorem ipsum dolor sit amet. And some more... And even more.";
+  $campaigns[1]->location = new StdClass();
+  $campaigns[1]->location->longitude = -0.04;
+  $campaigns[1]->location->latitude = -48.0;
+  $campaigns[1]->goal = 30000; // $300.00
+  $campaigns[1]->startDateTime = new DateTime();
+  $campaigns[1]->startDateTime->setDate(2014, 8, 15);
+  $campaigns[1]->startDateTime->setTime(12, 0, 0);
+  $campaigns[1]->endDateTime = new DateTime();
+  $campaigns[1]->endDateTime->setDate(2014, 11, 1);
+  $campaigns[1]->endDateTime->setTime(18, 0, 0);
+  $campaigns[1]->creator_id = 4;
 */
-=======
->>>>>>> FETCH_HEAD
 
->>>>>>> FETCH_HEAD
-	$app->render("DiscoverView", array(
-		"title" => "Micronate - Discover",
-		"campaigns" => $campaigns,
-	));
+  $app->render("DiscoverView", array(
+    "title" => "Micronate - Discover",
+    "campaigns" => $campaigns,
+  ));
 });
 
 // Sign up / in
 $app->get('/get-started', function() use ($app) {
-	$app->render("GetStartedView", array(
-		"title" => "Micronate - Get started"
-	));
+  $app->render("GetStartedView", array(
+    "title" => "Micronate - Get started"
+  ));
 });
 
 // Creating a campaign
@@ -131,11 +118,11 @@ $app->get('/campaigns/new', function() use ($app) {
     $app->redirect('/get-started');
   $user = new User($_SESSION['userId']);
 
-	$app->render("NewCampaignView", array(
-		"title" => "Micronate - New Campaign",
+  $app->render("NewCampaignView", array(
+    "title" => "Micronate - New Campaign",
     "user_full_name" => $user->getFullName(),
     "user_image_url" => $user->getGravatarUrl(),
-	));
+  ));
 });
 
 // Viewing a campaign
@@ -155,18 +142,18 @@ $app->get('/campaigns/:id', function($id) use ($app) {
 
   $campaign = refactorCampaign($campaignObj);
 
-	if ($campaign->getId() !== NULL) {
-		$app->render("CampaignView", array(
-			"title" => "Micronate - ".$campaign->getTitle(),
+  if ($campaign->getId() !== NULL) {
+    $app->render("CampaignView", array(
+      "title" => "Micronate - ".$campaign->getTitle(),
       "user_full_name" => $user->getFullName(),
       "user_image_url" => $user->getGravatarUrl(),
       "campaign" => $campaign;
-		));
-	} else {
-		$app->render("Error404View", array(
+    ));
+  } else {
+    $app->render("Error404View", array(
             "title" => "Micronate - Error 404"
         ), 404);
-	}
+  }
 });
 
 // Editing a campaign
@@ -176,11 +163,11 @@ $app->get('/campaigns/:id/edit', function($id) use ($app) {
     $app->redirect('/get-started');
   $user = new User($_SESSION['userId']);
 
-	$app->render("EditCampaignView", array(
-		"title" => "Micronate - ".$campaign->getTitle()." - Edit Campaign",
+  $app->render("EditCampaignView", array(
+    "title" => "Micronate - ".$campaign->getTitle()." - Edit Campaign",
     "user_full_name" => $user->getFullName(),
     "user_image_url" => $user->getGravatarUrl(),
-	));
+  ));
 });
 
 // View Profile
@@ -190,26 +177,26 @@ $app->get('/profile/:id', function($id) use ($app) {
     $app->redirect('/get-started');
   $loggedUser = new User($_SESSION['userId']);
 
-	$user = new User($id);
-	if ($user->getId() !== NULL) {
+  $user = new User($id);
+  if ($user->getId() !== NULL) {
 
-		$userObj = new StdClass();
-		$userObj->firstName = $user->getFirstName();
-		$userObj->surname = $user->getLastName();
-		$userObj->location = $user->getLocation();
-		$userObj->campaigns = refactorCampaigns($user->getCampaigns());
+    $userObj = new StdClass();
+    $userObj->firstName = $user->getFirstName();
+    $userObj->surname = $user->getLastName();
+    $userObj->location = $user->getLocation();
+    $userObj->campaigns = refactorCampaigns($user->getCampaigns());
 
-		$app->render("ProfileView", array(
-			"title" => "Micronate - Profile",
-			"user" => $userObj,
+    $app->render("ProfileView", array(
+      "title" => "Micronate - Profile",
+      "user" => $userObj,
       "logged_user_full_name" => $loggedUser->getFullName(),
       "logged_user_image_url" => $loggedUser->getGravatarUrl(),
-		));
-	} else {
-		$app->render("Error404View", array(
+    ));
+  } else {
+    $app->render("Error404View", array(
             "title" => "Micronate - Error 404"
         ), 404);
-	}
+  }
 });
 
 // Edit Profile
@@ -219,11 +206,11 @@ $app->get('/profile/:id/edit', function($id) use ($app) {
     $app->redirect('/get-started');
   $user = new User($_SESSION['userId']);
 
-	$app->render("EditProfileView", array(
-		"title" => "Micronate - Edit Profile",
+  $app->render("EditProfileView", array(
+    "title" => "Micronate - Edit Profile",
     "user_full_name" => $user->getFullName(),
     "user_image_url" => $user->getGravatarUrl(),
-	));
+  ));
 });
 
 // View Transactions of the registered user
@@ -233,20 +220,20 @@ $app->get('/profile/transactions', function($id) use ($app) {
     $app->redirect('/get-started');
   $user = new User($_SESSION['userId']);
 
-	$app->render("UserTransactionView", array(
-		"title" => "Micronate - User transactions",
+  $app->render("UserTransactionView", array(
+    "title" => "Micronate - User transactions",
     "user_full_name" => $user->getFullName(),
     "user_image_url" => $user->getGravatarUrl(),
 
-	));
+  ));
 });
 
 $app->post('/signup', function() use($app){
- 	$params = $app->request->post();
+   $params = $app->request->post();
 
- 	$newUID = User::createNew($params['email'], $params['username'],
- 												    $params['pwd'], $params['firstname'],
- 												    $params['lastname'], $params['location']);
+   $newUID = User::createNew($params['email'], $params['username'],
+                             $params['pwd'], $params['firstname'],
+                             $params['lastname'], $params['location']);
 
   session_start();
   $_SESSION['userId'] = $newUID;
@@ -254,8 +241,8 @@ $app->post('/signup', function() use($app){
 });
 
 $app->post('/login', function() use($app){
- 	$params = $app->request->post();
- 	$userId = User::verifyCredentials($params['email'], $params['password']);
+   $params = $app->request->post();
+   $userId = User::verifyCredentials($params['email'], $params['password']);
 
   session_start();
   $_SESSION['userId'] = $newUID;
